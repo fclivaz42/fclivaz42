@@ -1,0 +1,37 @@
+########################
+# Main ZSH config file #
+########################
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s` > /dev/null
+  ssh-add
+fi
+
+HISTFILE=~/.zsh_history
+HISTSIZE=4096
+SAVEHIST=16384
+
+# Source extra .zsh files.
+source $HOME/.zsh_aliases
+source $HOME/.zsh_exports
+source $HOME/.brewconfig.zsh -e 
+source $HOME/.brew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.brew/share/zsh-you-should-use/you-should-use.plugin.zsh
+
+bindkey "^e" end-of-line
+bindkey "^a" beginning-of-line
+unsetopt menu_complete
+setopt append_history
+setopt prompt_subst
+setopt auto_menu
+setopt always_to_end
+setopt complete_in_word
+setopt hist_ignore_dups
+setopt inc_append_history
+
+# Launch!
+source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+fastfetch

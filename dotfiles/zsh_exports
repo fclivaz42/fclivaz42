@@ -1,0 +1,10 @@
+############################
+# ZSH exports config file. #
+############################
+
+export PATH=$HOME/bins:$PATH
+export PATH=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:$PATH
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export HOMEBREW_NO_ENV_HINTS=1
+export LDFLAGS="-L$HOME/.brew/opt/llvm/lib"
+export CPPFLAGS="-I$HOME/.brew/opt/llvm/include"

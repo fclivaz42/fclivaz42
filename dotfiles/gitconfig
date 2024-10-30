@@ -1,0 +1,8 @@
+[user]
+	email = fclivaz@pm.me
+	name = fclivaz42
+[alias]
+	undo = reset --soft HEAD^
+
+[core]
+	excludesFile = ~/.git_global_ignore

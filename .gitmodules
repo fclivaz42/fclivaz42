@@ -1,0 +1,3 @@
+[submodule "dotfiles/config/nvim"]
+	path = dotfiles/config/nvim
+	url = ssh://git@github.com/fclivaz42/42-nvim.git
