@@ -1,0 +1,47 @@
+############################
+# ZSH aliases config file. #
+############################
+
+alias cdloc="cd ~/Desktop/LOCAL"
+alias goinfre="cd ~/goinfre"
+alias cdlive="cd ~/Desktop/LIVE/"
+alias cdd="cd ~/Desktop"
+alias giti="cp ~/tools/.gitignore ./ && git add -f .gitignore && git commit -m gitignore && git push"
+alias ignupd="git rm -r --cached . && git add -f .gitignore && git commit -m gitignore && git push"
+alias gitr="git rm -r --cached ."
+alias ga="git add ."
+gcm() {
+	git commit -m $1
+	git status
+}
+alias gp="git push"
+alias gpl="git pull"
+alias gst='git status'
+alias gsw='git switch'
+alias gd='git diff'
+alias gu='git undo'
+alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias gww="gcc -Werror -Wextra -Wall"
+alias cat="bat"
+alias cate="/bin/cat"
+alias make='make -s -j$(nproc)'
+alias brewski='brew update ; brew upgrade ; brew cleanup ; brew cleanup -s'
+alias cclean='bash ~/Cleaner_42.sh'
+alias ls="eza"
+alias ll="ls -la"
+alias tree="eza --tree"
+alias kupdate="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
+alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
+alias neofetch="fastfetch"
+
+# Batdiff
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
+
+vsclean() {
+	rm -rf ~/.vscode
+	echo "~/.vscode removed."
+	rm -rf "$HOME/Library/Application Support/Code"
+	echo "lib/Code removed."
+}

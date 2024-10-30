@@ -1,0 +1,12 @@
+############################
+# ZSH exports config file. #
+############################
+
+export PATH=$HOME/bins:$PATH
+export PATH=$HOME/.brew/sbin:$PATH
+export PATH=$HOME/.brew/opt/llvm/bin:$PATH
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export HOMEBREW_NO_ENV_HINTS=1
+export LDFLAGS="-L$HOME/.brew/opt/llvm/lib"
+export CPPFLAGS="-I$HOME/.brew/opt/llvm/include/c++/v1"
+export CXXFLAGS="-I$HOME/.brew/opt/llvm/include/c++/v1"
