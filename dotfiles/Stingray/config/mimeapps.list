@@ -1,0 +1,12 @@
+[Default Applications]
+text/plain=xed.desktop
+image/png=org.gnome.Loupe.desktop
+image/jpeg=org.gnome.Loupe.desktop
+application/octet-stream=xed.desktop
+inode/directory=org.gnome.Nautilus.desktop
+
+[Added Associations]
+application/x-blender=userapp-blender-VGFBK2.desktop;
+image/png=org.gnome.Loupe.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
+application/octet-stream=xed.desktop;

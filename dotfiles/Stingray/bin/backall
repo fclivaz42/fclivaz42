@@ -1,0 +1,15 @@
+#!/bin/zsh
+tmux new-session \; \
+    split-window -v \; \
+    split-window -h \; \
+    select-pane -t 1 \; \
+    split-window -h \; \
+    select-pane -t 1 \; \
+    send-keys "rsync -av --exclude={'.cache','.cargo','builds','Documents/sleeperbkp','.local/share/Trash','.local/share/nvim','*cache*','*Cache*','*tmp*','*temp*','*.log','*.blend1'} -e ssh ~/ $BACKUPPATH/Backups/ArchHome && exit" C-m \; \
+    select-pane -t 2 \; \
+    send-keys "rsync -av --exclude={'Application Data','Cookies','My Documents','PrintHood','NetHood','Recent','SendTo','Start Menu','Templates','.glaze','.thumbnails','AppData/Local/AMD','*Temp*','*Cache*','*cache*','*TEMP*','*TMP*','*tmp*','*.log','*.blend1'} -e ssh /run/media/C_Drive/Users/Fabien/ $BACKUPPATH/Backups/WinHome && exit" C-m \; \
+    select-pane -t 3 \; \
+    send-keys "rsync -av --exclude={'\$RECYCLE.BIN','System Volume Information','Torrents','SteamLinked','GameExport','Random_shit/blend','Random_shit/GFX Packs','Random_shit/PAKS','Recovery','*Trash*','*Temp*','*Cache*','*cache*','*TEMP*','*TMP*','*tmp*','*.log','*.blend1'} -e ssh /run/media/D_Data/ $BACKUPPATH/Backups/ExtData && exit" C-m \; \
+    select-pane -t 4 \; \
+    send-keys "rsync -av --exclude={'\$RECYCLE.BIN','Backup','BlenderInstalls','System Volume Information','*Trash*','*Temp*','*cache*','*TEMP*','*TMP*','*tmp*','*.log','*.blend1'} -e ssh /run/media/F_Blenders/ $BACKUPPATH/Backups/Blender && exit" C-m \;
+exit

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Shutdown menu.
+
+HYPRCMDS=$(hyprctl -j clients | jq -j '.[] | "dispatch closewindow address:\(.address); "')
+hyprctl --batch "$HYPRCMDS"
+
+sleep 1
+
+if [[ $(hyprctl -j clients | jq length) -gt 0 ]]; then
+		notify-send -a Warning "Some clients haven't quit!"
+		exit
+fi
+
+if [[ $1 == "shutdown" ]]; then
+	notify-send -a System "Shutting Down."
+	dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true
+elif [[ $1 == "restart" ]]; then
+	notify-send -a System "Restarting."
+	dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true
+elif [[ $1 == "logout" ]]; then
+	notify-send -a System "Logging Out."
+	hyprctl dispatch exit
+else
+	notify-send "Wrong usage!"
+fi

@@ -1,0 +1,32 @@
+alias blender="~/bin/blender/blender"
+open() {
+	xdg-open $1 & disown
+}
+alias cat="bat"
+alias make='make -j$(nproc) -s'
+alias gww="gcc -Wall -Werror -Wextra"
+alias ls='eza'
+alias ll='eza -alh'
+alias tree='eza --tree'
+alias ga="git add ."
+gcm() {
+	git commit -m $1
+	git status
+}
+alias gp="git push"
+alias gpl="git pull"
+alias gst='git status'
+alias gsw='git switch'
+alias gd='git diff'
+alias gu='git undo'
+alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias reboot='/usr/bin/reboot'
+alias poweroff='/usr/bin/poweroff'
+alias shutdown='/usr/bin/shutdown'
+alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
+alias neofetch="fastfetch"
+export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$PATH"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+export BAT_PAGING=never
+export BAT_PAGER=never
