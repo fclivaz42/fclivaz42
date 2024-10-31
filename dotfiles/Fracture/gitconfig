@@ -1,0 +1,7 @@
+[user]
+	email = fclivaz@pm.me
+	name = fclivaz42
+[alias]
+	undo = reset --soft HEAD^
+[core]
+	editor = nvim

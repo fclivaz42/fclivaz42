@@ -1,0 +1,44 @@
+#########################
+#        .ZSHRC         #
+#########################
+
+HISTFILE=~/.zsh_history
+HISTSIZE=4096
+SAVEHIST=16384
+
+# Keybinds
+bindkey -e
+bindkey "^[[3~" delete-char
+bindkey "^e" end-of-line
+bindkey "^a" beginning-of-line
+
+# Options
+unsetopt menu_complete
+setopt append_history
+setopt prompt_subst
+setopt auto_menu
+setopt always_to_end
+setopt complete_in_word
+setopt hist_ignore_dups
+setopt inc_append_history
+
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename "$HOME/.zshrc"
+
+autoload -Uz compinit
+compinit
+
+# Plugins
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
+source ~/.zsh_aliases
+source ~/.zsh_exports
+
+# Launch!
+
+rm -rf ~/.local/state/nvim/swap
+source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+fastfetch

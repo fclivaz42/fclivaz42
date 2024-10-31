@@ -1,0 +1,9 @@
+#########################
+#     .ZSH_EXPORTS      #
+#########################
+
+export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$PATH"
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export BAT_PAGING=never
+export BAT_PAGER=never

@@ -1,0 +1,36 @@
+{
+	// Filemanager Launcher
+	"custom/filemanager": {
+		"format": " ",
+		"on-click": "nautilus -w",
+		"tooltip": false
+	},
+
+	// Firefox Launcher
+	"custom/firefox": {
+		"format": " ",
+		"on-click": "firefox",
+		"tooltip": false
+	},
+
+	// Blender Launcher
+	"custom/blender": {
+		"format": " ",
+		"on-click": "blender",
+		"tooltip": false
+	},
+
+	// GNOME Calculator
+	"custom/calculator": {
+		"format": " ",
+		"on-click": "gnome-calculator",
+		"tooltip": false
+	},
+
+	// Launcher
+	"custom/launcher": {
+		"format": " ",
+		"on-click": "killall wofi || wofi",
+		"tooltip": false
+	}
+}

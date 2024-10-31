@@ -1,0 +1,13 @@
+[Added Associations]
+text/plain=xed.desktop;
+application/x-zerosize=xed.desktop;
+image/png=org.gnome.Loupe.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
+
+[Default Applications]
+video/mp4=mpv.desktop
+text/plain=xed.desktop
+application/x-zerosize=xed.desktop
+image/png=org.gnome.Loupe.desktop
+image/jpeg=org.gnome.Loupe.desktop
+inode/directory=org.gnome.Nautilus.desktop
