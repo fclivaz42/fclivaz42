@@ -1,0 +1,77 @@
+{
+	// CPU
+	"cpu": {
+		"format": "/   {usage}% ",
+		"on-double-click": "kitty btop"
+	},
+
+	// Memory
+	"memory": {
+		"format": "/   {}% ",
+		"on-double-click": "kitty btop"
+	},
+
+	// SSD space used
+	"disk": {
+		"interval": 60,
+		"format": "/   {percentage_used}% ",
+		"path": "/",
+		"on-double-click": "kitty btop"
+	}, 
+	
+	// Network
+	"network": {
+		"format": "{ifname}",
+		"format-wifi": "/   {signalStrength}% ",
+		"format-ethernet": "/   ",
+		"format-disconnected": "/   ", //An empty format will hide the module.
+		"tooltip-format": "  {ifname} via {gwaddri}",
+		"tooltip-format-wifi": "  {essid} ({signalStrength}%)",
+		"tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+		"tooltip-format-disconnected": "Disconnected",
+		"on-double-click": "nm-connection-editor",
+		"on-click-right": "if ifconfig wlan0 | grep 'UP' >/dev/null; then doas ifconfig wlan0 down && notify-send -a wlan0 down; else doas ifconfig wlan0 up && notify-send -a wlan0 up; fi",
+		"max-length": 50,
+		"interval": 5
+	},
+
+	// Battery
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "/ {icon} {capacity}%",
+		"format-charging": "/  {capacity}%",
+		"format-plugged": "/  {capacity}%",
+		"format-alt": "{icon} {time}",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"interval": 5,
+		"format-icons": [" !", " ", " ", " ", " "]
+	},
+
+	// Pulseaudio
+	"pulseaudio": {
+		"scroll-step": 2, // %, can be a float
+		"format": "{icon}{volume}% ",
+		"format-muted": " 0% ",
+		"format-icons": {
+			"default": [" ", " ", "  "]
+		},
+		"on-click-right": "pavucontrol",
+		"on-click": "pamixer -t"
+	},
+
+	// Bluetooth
+	"bluetooth": {
+		"format-disabled": "/ 󰁅 ",
+		"format-off": "/  ",
+		"format-on": "/ 󰇙 ",
+		"format-connected": "/ 󰹹 ",
+		"interval": 5,
+		"on-click": "blueman-manager",
+		"on-click-right": "if bt-adapter -i | grep 'Powered: 0' >/dev/null; then bt-adapter --set Powered 1; else bt-adapter --set Powered 0; fi"
+	}
+}

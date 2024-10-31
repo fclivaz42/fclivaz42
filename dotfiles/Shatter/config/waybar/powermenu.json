@@ -1,0 +1,43 @@
+{
+	// Power Menu
+    "custom/lock": {
+        "format": " ",
+        "on-click": "loginctl lock-session",
+        "tooltip": false
+    },
+
+    // Power Menu
+    "custom/logout": {
+        "format": "  ",
+        "on-click": "/home/fclivaz/bin/powmenu logout",
+        "tooltip": false
+    },
+
+	// Power Menu
+    "custom/hibernate": {
+        "format": " ",
+        "on-click": "systemctl hibernate",
+        "tooltip": false
+    },
+
+	// Power Menu
+    "custom/suspend": {
+        "format": " ",
+        "on-click": "systemctl suspend",
+        "tooltip": false
+    },
+
+	// Power Menu
+    "custom/restart": {
+        "format": " ",
+        "on-click": "/home/fclivaz/bin/powmenu restart",
+        "tooltip": false
+    },
+
+	// Power Menu
+    "custom/shutdown": {
+        "format": "",
+        "on-click": "/home/fclivaz/bin/powmenu shutdown",
+        "tooltip": false
+    }
+}

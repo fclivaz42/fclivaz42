@@ -1,0 +1,5 @@
+[user]
+	name = fclivaz42
+	email = fclivaz@pm.me
+[core]
+	editor = nvim

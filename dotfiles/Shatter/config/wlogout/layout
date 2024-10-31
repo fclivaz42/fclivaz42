@@ -1,0 +1,36 @@
+{
+    "label" : "shutdown",
+    "action" : "/home/fclivaz/bin/powmenu shutdown",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
+}
+{
+    "label" : "reboot",
+    "action" : "/home/fclivaz/bin/powmenu restart",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
+    "label" : "lock",
+    "action" : "loginctl lock-session",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "logout",
+    "action" : "/home/fclivaz/bin/powmenu logout",
+    "text" : "Logout",
+    "keybind" : "e"
+}
