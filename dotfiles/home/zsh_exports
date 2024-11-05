@@ -1,0 +1,24 @@
+#########################
+#     .ZSH_EXPORTS      #
+#########################
+#
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+if [ $UNAME = "Arch Linux" ]; then
+	export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$PATH"
+	export MANROFFOPT="-c"
+elif [ $UNAME = "Darwin" ]; then
+	export PATH=$HOME/bins:$PATH
+	export PATH=$HOME/.brew/sbin:$PATH
+	export PATH=$HOME/.brew/opt/llvm/bin:$PATH
+	export PATH=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:$PATH
+	export LDFLAGS="-L$HOME/.brew/opt/llvm/lib"
+	export CPPFLAGS="-I$HOME/.brew/opt/llvm/include"
+else
+	export PATH=$HOME/bins:$PATH
+	export PATH=$HOME/.brew/sbin:$PATH
+	export PATH=$HOME/.brew/opt/llvm/bin:$PATH
+	export LDFLAGS="-L$HOME/.brew/opt/llvm/lib"
+	export CPPFLAGS="-I$HOME/.brew/opt/llvm/include/c++/v1"
+	export CXXFLAGS="-I$HOME/.brew/opt/llvm/include/c++/v1"
+fi

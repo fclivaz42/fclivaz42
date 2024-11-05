@@ -1,0 +1,42 @@
+{
+	// Group left hand side
+	"group/lhs": {
+		"orientation": "horizontal",
+		"modules": [
+		"wlr/taskbar",
+		"hyprland/window"
+		]
+	},
+
+	// Group Shutdown
+	"group/power": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 400,
+			"children-class": "powerdraw",
+			"transition-left-to-right": false
+		},
+		"modules": [
+			"custom/shutdown",
+			"custom/lock",
+			"custom/logout",
+			"custom/hibernate",
+			"custom/suspend",
+			"custom/restart"
+		]
+	},
+
+	// Group Hardware
+	"group/hardware": {
+		"orientation": "horizontal",
+		"modules": [
+			"pulseaudio",
+			"cpu",
+			"memory",
+			"disk",
+			"bluetooth",
+			"network",
+			"battery"
+		]
+	}
+}

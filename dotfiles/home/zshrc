@@ -1,0 +1,45 @@
+#########################
+#        .ZSHRC         #
+#########################
+
+HISTFILE=~/.zsh_history
+HISTSIZE=4096
+SAVEHIST=16384
+
+# Keybinds
+
+bindkey -e
+bindkey "^[[3~" delete-char
+bindkey "^e" end-of-line
+bindkey "^a" beginning-of-line
+
+# Options
+
+unsetopt menu_complete
+setopt append_history
+setopt prompt_subst
+setopt auto_menu
+setopt always_to_end
+setopt complete_in_word
+setopt hist_ignore_dups
+setopt inc_append_history
+
+# Plugins
+#
+if [ $(uname) = "Linux" ]; then
+	export UNAME="$(grep "^NAME=" /etc/os-release | cut -d'"' -f2)"
+else
+	export UNAME="Darwin"
+fi
+source $HOME/.zsh_aliases
+source $HOME/.zsh_exports
+source $HOME/.zsh_plugins
+unset UNAME
+
+#Launch!
+
+rm -rf "$HOME/.local/state/nvim/swap"
+source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+fastfetch

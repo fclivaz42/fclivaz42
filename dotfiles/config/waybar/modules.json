@@ -1,0 +1,49 @@
+// -- Modules
+{
+	// Workspaces
+	"hyprland/workspaces" : {
+		"on-click": "activate",
+		"active-only": true,
+		"all-outputs": true,
+		"format": "{id}",
+		"persistent_workspaces": {
+			 "*": 3
+		}
+	},
+
+	// Taskbar
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 18,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"active-first": true,
+		"app_ids-mapping" : {
+			"zsh" : "kitty"
+		},
+		"rewrite": {
+			"Firefox Web Browser": "Firefox",
+			"Foot Server": "Terminal"
+		}
+	},
+
+	// Hyprland Window
+	"hyprland/window": {
+		"rewrite": {
+			"(.*) — Firefox": "$1",
+			"(.*) — Mozilla Firefox": "$1",
+			"(.*) - Blender(.*)": "$1",
+			"(.*)WebCord -(.*)": "$2"
+		},
+		"separate-outputs": true
+	},
+
+	// Clock
+	"clock": {
+		"interval": 1,
+		"format": "{:%H:%M:%S}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%d-%m-%Y}"
+	}
+}

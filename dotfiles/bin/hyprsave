@@ -1,0 +1,11 @@
+#!/bin/bash
+HYPRGAMEMODE=$(hyprctl -j getoption decoration:blur:enabled | jq -j ".int")
+if [ "$HYPRGAMEMODE" = 1 ] ; then
+    hyprctl --batch "\
+		keyword layerrule unset, waybar;\
+        keyword decoration:blur:enabled 0;"
+	notify-send -a hyprsave "Power save on."
+    exit
+fi
+notify-send -a hyprsave "Power save off."
+hyprctl reload

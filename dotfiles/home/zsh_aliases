@@ -1,0 +1,63 @@
+#########################
+#     .ZSH_ALIASES      #
+#########################
+
+if [ $UNAME != "Darwin" ]; then
+	alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
+	alias blender="~/bin/blender/blender"
+	alias make='make -j$(nproc) -s'
+	open() {
+		xdg-open $1 & disown
+	}
+else
+	alias fastfetch="fastfetch -l apple"
+	alias make='make -j$(sysctl -n hw.ncpu)'
+	alias brewski='cclean ; brew update ; brew upgrade ; brew cleanup ; brew cleanup -s ; cclean'
+	alias cclean='bash ~/Cleaner_42.sh'
+	alias francinette=/Users/fclivaz/francinette/tester.sh
+	alias paco=/Users/fclivaz/francinette/tester.sh
+	vsclean() {
+		rm -rf ~/.vscode
+		echo "~/.vscode removed."
+		rm -rf "$HOME/Library/Application Support/Code"
+		echo "lib/Code removed."
+	}
+fi
+
+alias cat="bat"
+alias gww="gcc -Wall -Werror -Wextra"
+alias ls='eza'
+alias ll='eza -alh'
+alias tree='eza --tree'
+alias virc="tmux new-session \; split-window -h \; split-window -v \; select-pane -t 1 \; send-keys 'nvim ~/.zshrc && exit' C-m \; select-pane -t 2 \; send-keys 'nvim ~/.zsh_aliases && exit' C-m \; select-pane -t 3 \; send-keys 'nvim ~/.zsh_exports && exit' C-m \;"
+
+alias ga="git add ."
+gcm() {
+	git commit -m $1
+	git status
+}
+alias gp="git push"
+alias gpl="git pull"
+alias gst='git status'
+alias gsw='git switch'
+alias gd='git diff'
+alias gu='git undo'
+alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+
+if [ $UNAME == "Arch Linux" ]; then
+	alias rl="hyprctl reload && source ~/.zshrc"
+	alias reboot='notify-send -a System "Restarting." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true'
+	alias poweroff='notify-send -a System "Shutting Down." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true'
+	alias shutdown="poweroff"
+	alias upsound="sudo cp $HOME/bin/SDCARD/bwoop.ogg /usr/share/sounds/freedesktop/stereo/bell.oga"
+	alias alert="ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit"
+else
+	alias rl="source ~/.zshrc"
+	alias cdloc="cd ~/Desktop/LOCAL"
+	alias goinfre="cd ~/goinfre"
+	alias cdlive="cd ~/Desktop/LIVE/"
+	alias cdd="cd ~/Desktop"
+	alias giti="cp ~/tools/.gitignore ./ && git add -f .gitignore && git commit -m gitignore && git push"
+	alias ignupd="git rm -r --cached . && git add -f .gitignore && git commit -m gitignore && git push"
+	alias gitr="git rm -r --cached ."
+fi

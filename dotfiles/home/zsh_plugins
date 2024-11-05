@@ -1,0 +1,14 @@
+#########################
+#     .ZSH_PLUGINS      #
+#########################
+
+if [ $UNAME = "Arch Linux" ]; then
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source /usr/share/zsh/plugins/zsh-you-should-use/zsh-you-should-use.zsh
+else
+	source $HOME/.zsh_brewconfig -e
+	source $HOME/.brew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source $HOME/.brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source $HOME/.brew/share/zsh-you-should-use/you-should-use.plugin.zsh
+fi

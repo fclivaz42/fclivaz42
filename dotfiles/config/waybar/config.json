@@ -1,0 +1,41 @@
+// -*- mode: jsonc -*-
+{
+	// General Settings
+
+	// Position TOP
+	"layer": "top",
+	"position": "top",
+	"margin-top": 4,
+	"margin-bottom": 4,
+	"height": 15,
+	"margin-left": 8,
+	"margin-right": 8, 
+	"spacing": 5,
+	"reload_style_on_change": true,
+
+	// Load Modules
+	"include": [
+		"~/.config/waybar/launchers.json",
+		"~/.config/waybar/powermenu.json",
+		"~/.config/waybar/hardware.json",
+		"~/.config/waybar/modules.json",
+		"~/.config/waybar/groups.json"
+	],
+
+	// Modules Left
+	"modules-left": [
+		"hyprland/workspaces",
+		"group/lhs"
+	],
+
+	// Modules Center
+	"modules-center": [
+		"clock"
+	],
+
+	// Modules Right
+	"modules-right": [
+		"group/hardware",
+		"group/power"
+	]
+}

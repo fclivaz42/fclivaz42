@@ -1,0 +1,9 @@
+set background=dark
+set autoindent
+set number
+set ruler
+syntax enable
+set rulerformat=%l-%v
+let g:user42 = 'fclivaz'
+let g:mail42 = 'fclivaz@student.42lausanne.ch'
+set mouse=a

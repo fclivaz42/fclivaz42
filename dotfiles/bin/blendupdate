@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+	echo "Usage: blendupdate 'blender.version'"
+	exit 1
+fi
+FOLDER=/usr/share/blender/$1/datafiles
+read -p "Outputting to folder $FOLDER. Validate? [y/n] " valid
+case $valid in
+
+	y | Y)
+		rm -rf $FOLDER/colormanagement
+		mkdir $FOLDER/colormanagement
+		cp -r /run/media/F_Blenders/zcopy-colormanagement/* $FOLDER/colormanagement
+	;;
+	n | N)
+		echo "Exiting."
+		exit 0
+	;;
+	*)
+		echo "Invalid operation. Exiting."
+		exit 1
+	;;
+esac
+
+exit 0
