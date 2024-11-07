@@ -27,7 +27,8 @@ fi
 alias cat="bat"
 alias gww="gcc -Wall -Werror -Wextra"
 alias ls='eza'
-alias ll='eza -alh'
+alias ll='ls -la'
+alias llh='ls -lah'
 alias tree='eza --tree'
 alias virc="tmux new-session \; split-window -h \; split-window -v \; select-pane -t 1 \; send-keys 'nvim ~/.zshrc && exit' C-m \; select-pane -t 2 \; send-keys 'nvim ~/.zsh_aliases && exit' C-m \; select-pane -t 3 \; send-keys 'nvim ~/.zsh_exports && exit' C-m \;"
 
@@ -44,7 +45,7 @@ alias gd='git diff'
 alias gu='git undo'
 alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 
-if [ $UNAME == "Arch Linux" ]; then
+if [ $UNAME = "Arch Linux" ]; then
 	alias rl="hyprctl reload && source ~/.zshrc"
 	alias reboot='notify-send -a System "Restarting." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true'
 	alias poweroff='notify-send -a System "Shutting Down." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true'
