@@ -28,7 +28,7 @@ if [ $UNAME = "Arch Linux" ]; then
 	alias reboot='notify-send -a System "Restarting." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true'
 	alias poweroff='notify-send -a System "Shutting Down." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true'
 	alias shutdown="poweroff"
-	alias upsound="sudo cp $HOME/bin/bwoop.ogg /usr/share/sounds/freedesktop/stereo/bell.oga"
+	alias upsound="sudo cp $HOME/bin/bwoop.oga /usr/share/sounds/freedesktop/stereo/bell.oga"
 	alias alert="ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit"
 else
 	alias rl="source ~/.zshrc"
