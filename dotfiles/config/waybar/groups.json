@@ -25,18 +25,7 @@
 			"custom/restart"
 		]
 	},
-
-	// Group Hardware
-	"group/hardware": {
-		"orientation": "horizontal",
-		"modules": [
-			"pulseaudio",
-			"cpu",
-			"memory",
-			"disk",
-			"bluetooth",
-			"network",
-			"battery"
-		]
-	}
+	"include": [
+		"~/.config/waybar/_hw.json"
+	]
 }

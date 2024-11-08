@@ -1,29 +1,7 @@
 #########################
 #     .ZSH_ALIASES      #
 #########################
-
-if [ $UNAME != "Darwin" ]; then
-	alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
-	alias blender="~/bin/blender/blender"
-	alias make='make -j$(nproc) -s'
-	open() {
-		xdg-open $1 & disown
-	}
-else
-	alias fastfetch="fastfetch -l apple"
-	alias make='make -j$(sysctl -n hw.ncpu)'
-	alias brewski='cclean ; brew update ; brew upgrade ; brew cleanup ; brew cleanup -s ; cclean'
-	alias cclean='bash ~/Cleaner_42.sh'
-	alias francinette=/Users/fclivaz/francinette/tester.sh
-	alias paco=/Users/fclivaz/francinette/tester.sh
-	vsclean() {
-		rm -rf ~/.vscode
-		echo "~/.vscode removed."
-		rm -rf "$HOME/Library/Application Support/Code"
-		echo "lib/Code removed."
-	}
-fi
-
+#
 alias cat="bat"
 alias gww="gcc -Wall -Werror -Wextra"
 alias ls='eza'
@@ -50,7 +28,7 @@ if [ $UNAME = "Arch Linux" ]; then
 	alias reboot='notify-send -a System "Restarting." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true'
 	alias poweroff='notify-send -a System "Shutting Down." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true'
 	alias shutdown="poweroff"
-	alias upsound="sudo cp $HOME/bin/SDCARD/bwoop.ogg /usr/share/sounds/freedesktop/stereo/bell.oga"
+	alias upsound="sudo cp $HOME/bin/bwoop.ogg /usr/share/sounds/freedesktop/stereo/bell.oga"
 	alias alert="ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit"
 else
 	alias rl="source ~/.zshrc"
@@ -61,4 +39,25 @@ else
 	alias giti="cp ~/tools/.gitignore ./ && git add -f .gitignore && git commit -m gitignore && git push"
 	alias ignupd="git rm -r --cached . && git add -f .gitignore && git commit -m gitignore && git push"
 	alias gitr="git rm -r --cached ."
+fi
+if [ $UNAME != "Darwin" ]; then
+	alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
+	alias blender="~/bin/blender/blender"
+	alias make='make -j$(nproc) -s'
+	open() {
+		xdg-open $1 & disown
+	}
+else
+	alias fastfetch="fastfetch -l apple"
+	alias make='make -j$(sysctl -n hw.ncpu) -s'
+	alias brewski='cclean ; brew update ; brew upgrade ; brew cleanup ; brew cleanup -s ; cclean'
+	alias cclean='bash ~/Cleaner_42.sh'
+	alias francinette=/Users/fclivaz/francinette/tester.sh
+	alias paco=/Users/fclivaz/francinette/tester.sh
+	vsclean() {
+		rm -rf ~/.vscode
+		echo "~/.vscode removed."
+		rm -rf "$HOME/Library/Application Support/Code"
+		echo "lib/Code removed."
+	}
 fi

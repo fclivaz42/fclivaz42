@@ -3,7 +3,7 @@
 	// Workspaces
 	"hyprland/workspaces" : {
 		"on-click": "activate",
-		"active-only": true,
+		"active-only": false,
 		"all-outputs": true,
 		"format": "{id}",
 		"persistent_workspaces": {
@@ -34,7 +34,7 @@
 			"(.*) — Firefox": "$1",
 			"(.*) — Mozilla Firefox": "$1",
 			"(.*) - Blender(.*)": "$1",
-			"(.*)WebCord -(.*)": "$2"
+			"(.*)Discord [|] (.*)": "$2"
 		},
 		"separate-outputs": true
 	},
