@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2024/11/08 04:38:11 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/12 18:50:36 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,4 +191,4 @@ install:
 
 userjs:
 	echo "Installing user.js..."
-	find ~ -name "prefs.js" -exec dirname {} \; | xargs -I % bash -c "echo % && ln -sf ${PWD}/user.js %/user.js"
+	find ~ -name "prefs.js" -exec dirname {} \; | xargs -I % bash -c "echo '%' && ln -sf '${PWD}/user.js' '%/user.js'"
