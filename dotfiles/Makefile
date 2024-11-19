@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2024/11/12 18:50:36 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/19 02:07:04 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ arch:
 	fi
 	# rm -rf ${HOME}/.zsh_brewconfig
 	echo "Installing config..."
+	fld="alacritty" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="bat" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="btop" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="cava" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
