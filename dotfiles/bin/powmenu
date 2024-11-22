@@ -15,11 +15,11 @@ fi
 if [[ $1 == "shutdown" ]]; then
 	notify-send -a System "Shutting Down."
 	sleep 1
-	dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true
+	systemctl poweroff
 elif [[ $1 == "restart" ]]; then
 	notify-send -a System "Restarting."
 	sleep 1
-	dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true
+	systemctl restart
 elif [[ $1 == "logout" ]]; then
 	notify-send -a System "Logging Out."
 	sleep 1
