@@ -24,6 +24,9 @@ alias gu='git undo'
 alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 
 if [ $UNAME = "Arch Linux" ]; then
+	alias hlconf="nvim ~/.config/hypr"
+	alias nvconf="nvim ~/.config/nvim"
+	alias wbconf="nvim ~/.config/waybar"
 	alias rl="hyprctl reload && source ~/.zshrc"
 	alias reboot='notify-send -a System "Restarting." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true'
 	alias poweroff='notify-send -a System "Shutting Down." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true'

@@ -29,3 +29,6 @@ bindings = [
 
 [scrolling]
 history = 16384
+
+[bell]
+command = { program = "ffplay", args = ["-nodisp", "/usr/share/sounds/freedesktop/stereo/bell.oga", "-autoexit"] }

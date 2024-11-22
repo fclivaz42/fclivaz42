@@ -5,7 +5,9 @@ if [ "$HYPRGAMEMODE" = 1 ] ; then
 		keyword layerrule unset, waybar;\
         keyword decoration:blur:enabled 0;"
 	notify-send -a hyprsave "Power save on."
+	ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit
     exit
 fi
+ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit
 notify-send -a hyprsave "Power save off."
 hyprctl reload

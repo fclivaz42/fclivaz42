@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2024/11/19 02:07:04 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/22 23:56:48 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,8 +169,20 @@ arch:
 		cp ${PWD}/config/$$fld.toml ${HOME}/.config/$$fld/starship.toml; \
 		echo "$$fld... installed. Remember to edit the config!"; \
 	fi
-	echo "Copying bin folder..."
-	cp -r bin/ ~/
+	echo "Copying/linking bin folder..."
+	mkdir -p ~/bin
+	cd ./bin
+	fld="swwwd" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
+	fld="hyprsave" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
+	fld="powmenu" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
+	fld="backall" && \
+	if [ -f ${HOME}/bin/$$fld ]; then \
+		echo "$$fld already installed."; \
+	else \
+		echo "Copying $$fld..."; \
+		cp ${PWD}/bin/$$fld ${HOME}/bin/; \
+	fi
+	cp ${PWD}/bin/bwoop.oga ${HOME}/bin/
 
 install:
 	echo "Warning: This will replace your current configuration."
