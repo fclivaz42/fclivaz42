@@ -11,7 +11,7 @@ case $valid in
 	y | Y)
 		rm -rf $FOLDER/colormanagement
 		mkdir $FOLDER/colormanagement
-		cp -r /run/media/F_Blenders/zcopy-colormanagement/* $FOLDER/colormanagement
+		cp -r /mnt/Blenders/zcopy-colormanagement/* $FOLDER/colormanagement
 	;;
 	n | N)
 		echo "Exiting."

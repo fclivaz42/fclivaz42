@@ -1,4 +1,5 @@
 #!/bin/zsh
+source ~/Documents/sysfiles/path.zsh
 [ -z $BACKUPPATH ] && echo "Cowardly refusing to back up since BACKUPPATH isnt set!" && exit
 tmux new-session \; \
     split-window -v \; \
