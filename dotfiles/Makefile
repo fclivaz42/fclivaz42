@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2024/11/22 23:56:48 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/23 03:37:38 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,127 +47,17 @@ arch:
 	fld="dunst" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="eww" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="fastfetch" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
-	fld="wlogout" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
-	fld="wofi" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="hypr" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld hyprland.conf __*
+	fld="kitty" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld kitty.conf _*
+	fld="starship" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld default.toml _*
+	fld="waybar" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config.json _*
+	fld="wlogout" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld layout _*
+	fld="wofi" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config _*
 	if [ ! -d ${HOME}/.config/nvim ]; then \
 		echo "Cloning 42-Nvim..." && git clone git@github.com:fclivaz42/42-nvim.git ${HOME}/.config/nvim; \
 		cd ${HOME}/.config/nvim && git switch personal; \
 	else \
 		echo "42-Nvim already installed."; \
-	fi
-	fld="waybar" && \
-	if [ -d ${HOME}/.config/$$fld ]; then \
-		if [[ ! -L ${HOME}/.config/$$fld/config.json && ! -L ${HOME}/.config/$$fld ]]; then \
-			echo "Backing up $$fld..." && mv ${HOME}/.config/$$fld ${HOME}/.config/$$fld.bak; \
-			echo "Installing $$fld..."; \
-			rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-			cd ${PWD}/config/$$fld/; \
-			for file in *; do \
-				if [[ $$file = _* ]]; then \
-					cp ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld; \
-				else \
-					ln -sf ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld/$$file; \
-				fi ; \
-			done; \
-		elif [ -L ${HOME}/.config/$$fld ]; then \
-				echo "$$fld is already hard-linked."; exit; \
-		else \
-			echo "$$fld is already installed."; exit; \
-		fi ; \
-	else \
-		echo "Installing $$fld..."; \
-		rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-		cd ${PWD}/config/$$fld/; \
-		for file in *; do \
-			if [[ $$file = _* ]]; then \
-				cp ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld; \
-			else \
-				ln -sf ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld/$$file; \
-			fi ; \
-		done; \
-	fi
-	fld="hypr" && \
-	if [ -d ${HOME}/.config/$$fld ]; then \
-		if [[ ! -L ${HOME}/.config/$$fld/hyprland.conf && ! -L ${HOME}/.config/$$fld ]]; then \
-			echo "Backing up $$fld..." && mv ${HOME}/.config/$$fld ${HOME}/.config/$$fld.bak; \
-			echo "Installing $$fld..."; \
-			rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-			cd ${PWD}/config/$$fld/; \
-			for file in *; do \
-				if [[ $$file = __* ]]; then \
-					cp ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld; \
-				else \
-					ln -sf ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld/$$file; \
-				fi ; \
-			done; \
-		elif [ -L ${HOME}/.config/$$fld ]; then \
-				echo "$$fld is already hard-linked."; exit; \
-		else \
-			echo "$$fld is already installed."; exit; \
-		fi ; \
-	else \
-		echo "Installing $$fld..."; \
-		rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-		cd ${PWD}/config/$$fld/; \
-		for file in *; do \
-			if [[ $$file = __* ]]; then \
-				cp ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld; \
-			else \
-				ln -sf ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld/$$file; \
-			fi ; \
-		done; \
-	fi
-	fld="kitty" && \
-	if [ -d ${HOME}/.config/$$fld ]; then \
-		if [[ ! -L ${HOME}/.config/$$fld/kitty.conf && ! -L ${HOME}/.config/$$fld ]]; then \
-			echo "Backing up $$fld..." && mv ${HOME}/.config/$$fld ${HOME}/.config/$$fld.bak; \
-			echo "Installing $$fld..."; \
-			rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-			cd ${PWD}/config/$$fld/; \
-			for file in *; do \
-				if [[ $$file = _* ]]; then \
-					cp ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld; \
-				else \
-					ln -sf ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld/$$file; \
-				fi ; \
-			done; \
-		elif [ -L ${HOME}/.config/$$fld ]; then \
-				echo "$$fld is already hard-linked."; exit; \
-		else \
-			echo "$$fld is already installed."; exit; \
-		fi ; \
-	else \
-		echo "Installing $$fld..."; \
-		rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-		cd ${PWD}/config/$$fld/; \
-		for file in *; do \
-			if [[ $$file = _* ]]; then \
-				cp ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld; \
-			else \
-				ln -sf ${PWD}/config/$$fld/$$file ${HOME}/.config/$$fld/$$file; \
-			fi ; \
-		done; \
-	fi
-	fld="starship" && \
-	if [ -d ${HOME}/.config/$$fld ]; then \
-		if [ ! -L ${HOME}/.config/$$fld/default.toml ]; then \
-			echo "Backing up $$fld..." && mv ${HOME}/.config/$$fld ${HOME}/.config/$$fld.bak; \
-			echo "Installing $$fld..."; \
-			rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-			ln -sf ${PWD}/config/$$fld.toml ${HOME}/.config/$$fld/default.toml; \
-			cp ${PWD}/config/$$fld.toml ${HOME}/.config/$$fld/starship.toml; \
-			echo "$$fld... installed. Remember to edit the config!"; \
-		elif [ -L ${HOME}/.config/$$fld ]; then \
-				echo "$$fld is already hard-linked."; exit; \
-		else \
-			echo "$$fld is already installed."; exit; \
-		fi ; \
-	else \
-		echo "Installing $$fld..."; \
-		rm -rf ${HOME}/.config/$$fld; mkdir ${HOME}/.config/$$fld; \
-		ln -sf ${PWD}/config/$$fld.toml ${HOME}/.config/$$fld/default.toml; \
-		cp ${PWD}/config/$$fld.toml ${HOME}/.config/$$fld/starship.toml; \
-		echo "$$fld... installed. Remember to edit the config!"; \
 	fi
 	echo "Copying/linking bin folder..."
 	mkdir -p ~/bin

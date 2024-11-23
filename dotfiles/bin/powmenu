@@ -19,7 +19,7 @@ if [[ $1 == "shutdown" ]]; then
 elif [[ $1 == "restart" ]]; then
 	notify-send -a System "Restarting."
 	sleep 1
-	systemctl restart
+	systemctl reboot
 elif [[ $1 == "logout" ]]; then
 	notify-send -a System "Logging Out."
 	sleep 1
