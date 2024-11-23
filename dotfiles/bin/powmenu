@@ -5,7 +5,7 @@
 HYPRCMDS=$(hyprctl -j clients | jq -j '.[] | "dispatch closewindow address:\(.address); "')
 hyprctl --batch "$HYPRCMDS"
 
-sleep 1
+sleep 0.25
 
 if [[ $(hyprctl -j clients | jq length) -gt 0 ]]; then
 		notify-send -a Warning "Some clients haven't quit!"
@@ -14,15 +14,15 @@ fi
 
 if [[ $1 == "shutdown" ]]; then
 	notify-send -a System "Shutting Down."
-	sleep 1
+	sleep 0.25
 	systemctl poweroff
 elif [[ $1 == "restart" ]]; then
 	notify-send -a System "Restarting."
-	sleep 1
+	sleep 0.25
 	systemctl reboot
 elif [[ $1 == "logout" ]]; then
 	notify-send -a System "Logging Out."
-	sleep 1
+	sleep 0.25
 	hyprctl dispatch exit
 else
 	notify-send "Wrong usage!"
