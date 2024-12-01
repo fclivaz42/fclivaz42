@@ -168,4 +168,10 @@ user_pref("network.dns.disablePrefetchFromHTTPS", true);
 user_pref("extensions.pocket.enabled", false);
 user_pref("browser.translations.enable", false);
 user_pref("browser.translations.panelShown", false);
+
+user_pref("media.ffmpeg.vaapi.enabled", true);
+user_pref("media.hardware-video-decoding.enabled", true);
+user_pref("media.hardware-video-decoding.force-enabled", true);
+user_pref("media.navigator.mediaidecoder_vp8_hardware_enabled", true);
+
 user_pref("_user.js.finished", "Ooh. Lot quieter around here.");
