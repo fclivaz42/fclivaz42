@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2024/11/23 03:37:38 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2024/12/02 03:32:43 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,9 @@ arch:
 	chmod a+x ./helper.sh
 	cd ${PWD}/home; \
 	for file in *; do /bin/bash ../helper.sh ${HOME}/.$$file $$PWD/$$file; done
+	mkdir -p ${HOME}/zshrc.d
+	cd ${PWD}/zshrc.d; \
+	for file in *; do /bin/bash ../helper.sh ${HOME}/zshrc.d/$$file $$PWD/$$file; done
 	if [ ! -d ${HOME}/.tmux ]; then \
 		echo "Cloning TPM..." && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; \
 	else \

@@ -31,9 +31,10 @@ if [ $(uname) = "Linux" ]; then
 else
 	export UNAME="Darwin"
 fi
-source $HOME/.zsh_aliases
-source $HOME/.zsh_exports
-source $HOME/.zsh_plugins
+
+for file in $HOME/zshrc.d/*; do
+	source $file
+done
 unset UNAME
 
 #Launch!
