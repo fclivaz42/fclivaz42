@@ -3,7 +3,7 @@
 #########################
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG=$HOME/.config/starship/_starship.toml
 
 if [ $UNAME = "Arch Linux" ]; then
 	export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$PATH"

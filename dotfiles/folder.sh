@@ -10,7 +10,7 @@ if [ -d $1 ]; then
 	if [[ ! -L $1/$3 && ! -L $1 ]]; then
 		echo "Backing up $1..." && mv $1 $1.bak
 		echo "Installing $1..."
-		rm -rf $1; mkdir $1
+		rm -rf $1; mkdir -p $1
 		cd $2
 		for file in *; do
 			if [[ $file = $4 ]]; then
@@ -26,7 +26,7 @@ if [ -d $1 ]; then
 	fi
 else
 	echo "Installing $1..."
-	rm -rf $1; mkdir $1
+	rm -rf $1; mkdir -p $1
 	cd $2
 	for file in *; do
 		if [[ $file = $4 ]]; then
