@@ -9,7 +9,7 @@
     // Power Menu
     "custom/logout": {
         "format": "  ",
-        "on-click": "/home/fclivaz/bin/powmenu logout",
+        "on-click": "~/bin/powmenu logout",
         "tooltip": false
     },
 
@@ -30,14 +30,14 @@
 	// Power Menu
     "custom/restart": {
         "format": " ",
-        "on-click": "/home/fclivaz/bin/powmenu restart",
+        "on-click": "~/bin/powmenu restart",
         "tooltip": false
     },
 
 	// Power Menu
     "custom/shutdown": {
         "format": "",
-        "on-click": "/home/fclivaz/bin/powmenu shutdown",
+        "on-click": "~/bin/powmenu shutdown",
         "tooltip": false
     }
 }
