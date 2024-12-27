@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2024/12/02 22:13:16 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2024/12/28 00:06:00 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ arch:
 	fld="eww" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="fastfetch" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="hypr" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld hyprland.conf __*
+	fld="ghostty" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config _*
 	fld="kitty" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld kitty.conf _*
 	fld="starship" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld default.toml _*
 	fld="waybar" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config.json _*

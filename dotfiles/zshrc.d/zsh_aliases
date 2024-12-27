@@ -8,7 +8,7 @@ alias ls='eza'
 alias ll='ls -la'
 alias llh='ls -lah'
 alias tree='eza --tree'
-alias virc="tmux new-session \; split-window -v \; split-window -h \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; send-keys 'nvim ~/.zshrc && exit' C-m \; select-pane -t 2 \; send-keys 'nvim ~/.zsh_aliases && exit' C-m \; select-pane -t 3 \; send-keys 'nvim ~/.zsh_exports && exit' C-m \; select-pane -t 4 \; send-keys 'nvim ~/.zsh_plugins && exit' C-m \;"
+alias virc="tmux new-session \; split-window -v \; split-window -h \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; send-keys 'nvim ~/.zshrc && exit' C-m \; select-pane -t 2 \; send-keys 'nvim ~/zshrc.d/zsh_aliases && exit' C-m \; select-pane -t 3 \; send-keys 'nvim ~/zshrc.d/zsh_exports && exit' C-m \; select-pane -t 4 \; send-keys 'nvim ~/zshrc.d/zsh_plugins && exit' C-m \;"
 
 alias ga="git add ."
 gcm() {

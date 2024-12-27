@@ -1,0 +1,12 @@
+window-decoration = false
+background-opacity = 0.8
+font-family = Meslo LGMDZ
+# theme = iTerm2 Default
+# theme = Apple System Colors
+theme = CGA
+# theme = Monokai Remastered
+# background = #000000
+foreground = #FFFFFF
+font-size = 11
+keybind = ctrl+alt+d=new_split:right
+bold-is-bright = false
