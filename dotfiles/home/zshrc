@@ -39,7 +39,6 @@ unset UNAME
 
 #Launch!
 
-rm -rf "$HOME/.local/state/nvim/swap"
 source <(fzf --zsh)
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
