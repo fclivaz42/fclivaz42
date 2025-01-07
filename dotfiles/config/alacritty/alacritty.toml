@@ -6,7 +6,7 @@
 
 [window]
 blur = true
-opacity = 0.85
+opacity = 0.8
 dynamic_padding = false
 
 [font]

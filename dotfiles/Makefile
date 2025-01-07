@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2024/12/28 00:06:00 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2025/01/07 20:49:52 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ HOME = $(shell echo $$HOME)
 
 UNAME = $(shell uname)
 
+SHELL = /bin/bash
+
 ifeq (${UNAME},Darwin)
 	INAME = macOS
 else
@@ -27,7 +29,7 @@ endif
 all:
 	echo "Usage: make install"
 
-arch:
+ubuntu:
 	echo "Installing dotfiles..."
 	chmod a+x ./helper.sh
 	cd ${PWD}/home; \
@@ -41,6 +43,38 @@ arch:
 		echo "TPM already installed."; \
 	fi
 	# rm -rf ${HOME}/.zsh_brewconfig
+	echo "Installing config..."
+	mkdir -p ${HOME}/.config
+	fld="alacritty" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="bat" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="btop" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="cava" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="clangd" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="fastfetch" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="ghostty" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config _*
+	fld="kitty" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld kitty.conf _*
+	fld="starship" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld default.toml _*
+	if [ ! -d ${HOME}/.config/nvim ]; then \
+		echo "Cloning 42-Nvim..." && git clone git@github.com:fclivaz42/42-nvim.git ${HOME}/.config/nvim; \
+		cd ${HOME}/.config/nvim && git switch personal; \
+	else \
+		echo "42-Nvim already installed."; \
+	fi
+
+arch:
+	echo "Installing dotfiles..."
+	chmod a+x ./helper.sh
+	cd ${PWD}/home; \
+	for file in *; do /bin/bash ../helper.sh ${HOME}/.$$file $$PWD/$$file; done
+	mkdir -p ${HOME}/zshrc.d
+	cd ${PWD}/zshrc.d; \
+	for file in *; do /bin/bash ../helper.sh ${HOME}/zshrc.d/$$file $$PWD/$$file; done
+	rm -rf ${HOME}/zshrc.d/zsh_brewconfig
+	if [ ! -d ${HOME}/.tmux ]; then \
+		echo "Cloning TPM..." && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; \
+	else \
+		echo "TPM already installed."; \
+	fi
 	echo "Installing config..."
 	mkdir -p ${HOME}/.config
 	fld="alacritty" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld

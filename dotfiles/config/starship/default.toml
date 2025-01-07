@@ -20,7 +20,7 @@ ssh_only = false
 format = ' [@](bold white) [$hostname](+++HOSTNAME+++)[\]](bold white)'
 
 [directory]
-format = '\[[$path]($style)\]'
+format = '[\[](bold white)[$path]($style)[\]](bold white)'
 style= 'bold bright-yellow'
 
 [cmd_duration]

@@ -27,7 +27,6 @@ if [ $UNAME = "Arch Linux" ]; then
 	alias hlconf="nvim ~/.config/hypr"
 	alias nvconf="nvim ~/.config/nvim"
 	alias wbconf="nvim ~/.config/waybar"
-	alias viconf="nvim ~/.config/"
 	alias btop="kitty btop & disown"
 	alias rl="hyprctl reload && source ~/.zshrc"
 	alias reboot='notify-send -a System "Restarting." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true'
@@ -44,8 +43,10 @@ else
 	alias giti="cp ~/tools/.gitignore ./ && git add -f .gitignore && git commit -m gitignore && git push"
 	alias ignupd="git rm -r --cached . && git add -f .gitignore && git commit -m gitignore && git push"
 	alias gitr="git rm -r --cached ."
+	alias brewski='brew update ; brew upgrade ; brew cleanup ; brew cleanup -s'
 fi
 if [ $UNAME != "Darwin" ]; then
+	alias viconf="nvim ~/.config/"
 	alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
 	alias blender="~/bin/blender/blender"
 	alias make='make -j$(nproc) -s'
