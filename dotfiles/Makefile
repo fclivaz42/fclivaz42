@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2025/01/07 20:49:52 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2025/01/07 21:03:19 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,6 @@ ubuntu:
 	else \
 		echo "TPM already installed."; \
 	fi
-	# rm -rf ${HOME}/.zsh_brewconfig
 	echo "Installing config..."
 	mkdir -p ${HOME}/.config
 	fld="alacritty" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
@@ -60,6 +59,36 @@ ubuntu:
 	else \
 		echo "42-Nvim already installed."; \
 	fi
+
+macos:
+	echo "Installing dotfiles..."
+	chmod a+x ./helper.sh
+	cd ${PWD}/home; \
+	for file in *; do /bin/bash ../helper.sh ${HOME}/.$$file $$PWD/$$file; done
+	mkdir -p ${HOME}/zshrc.d
+	cd ${PWD}/zshrc.d; \
+	for file in *; do /bin/bash ../helper.sh ${HOME}/zshrc.d/$$file $$PWD/$$file; done
+	if [ ! -d ${HOME}/.tmux ]; then \
+		echo "Cloning TPM..." && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; \
+	else \
+		echo "TPM already installed."; \
+	fi
+	echo "Installing config..."
+	mkdir -p ${HOME}/.config
+	fld="alacritty" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="bat" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="clangd" && ./helper.sh ${HOME}/Library/Preferences/$$fld ${PWD}/config/$$fld
+	fld="fastfetch" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="ghostty" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config _*
+	fld="kitty" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld kitty.conf _*
+	fld="starship" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld default.toml _*
+	if [ ! -d ${HOME}/.config/nvim ]; then \
+		echo "Cloning 42-Nvim..." && git clone git@github.com:fclivaz42/42-nvim.git ${HOME}/.config/nvim; \
+		cd ${HOME}/.config/nvim && git switch personal; \
+	else \
+		echo "42-Nvim already installed."; \
+	fi
+
 
 arch:
 	echo "Installing dotfiles..."
