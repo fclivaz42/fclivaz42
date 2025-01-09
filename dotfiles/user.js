@@ -168,6 +168,8 @@ user_pref("network.dns.disablePrefetchFromHTTPS", true);
 user_pref("extensions.pocket.enabled", false);
 user_pref("browser.translations.enable", false);
 user_pref("browser.translations.panelShown", false);
+user_pref("privacy.fingerprintingProtection", true);
+user_pref("privacy.resistFingerprinting", true);
 
 user_pref("media.ffmpeg.vaapi.enabled", true);
 user_pref("media.hardware-video-decoding.enabled", true);
