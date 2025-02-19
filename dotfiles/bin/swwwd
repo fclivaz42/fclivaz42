@@ -24,7 +24,7 @@ while true; do
 		img=$(find "$1" -type f | while read -r imgs; \
 		do echo "$(($(date +%s%N) % 1000)):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
 			echo "Outputting image $img on display $disp"
-				swww img -o "$disp" "$img"
+				swww img -o "$disp" "$img" && sleep 2
 		done
 	sleep $INTERVAL
 	done
