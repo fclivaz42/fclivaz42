@@ -1,4 +1,6 @@
-window-decoration = false
+# window-decoration = none
+# gtk-adwaita = false
+# gtk-titlebar = false
 background-opacity = 0.8
 font-family = Meslo LGMDZ
 # theme = iTerm2 Default
