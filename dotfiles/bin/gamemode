@@ -1,0 +1,10 @@
+#!/bin/bash
+HYPRSCALE=$(hyprctl -j monitors | jq -j '.[0] | .scale')
+if [ "$HYPRSCALE" = "1.25" ]; then
+	sed -i '6 s/1.25/1/' ~/.config/hypr/__dev.conf
+	sed -i '7 s/3072/3840/' ~/.config/hypr/__dev.conf
+else
+	sed -i '6 s/ 1/ 1.25/' ~/.config/hypr/__dev.conf
+	sed -i '7 s/3840/3072/' ~/.config/hypr/__dev.conf
+fi
+hyprctl reload
