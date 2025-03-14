@@ -1,0 +1,127 @@
+(defwidget greeter [?text name]
+	(box
+		:orientation "horizontal"
+		:halign "left"
+		text
+		(button
+			:onclick "eww open powermenu"
+			window
+		)
+	)
+)
+
+(defwidget labeled-container [name]
+	(box
+		:class "container"
+		name
+		(children)
+	)
+)
+
+(defwidget cstatus [input icon ?class]
+	(box
+		:vexpand false
+		:hexpand false
+		:class "cstatus"
+		(circular-progress :value input
+			:start-at 75
+			:thickness 4
+			:class {class != "" ? class : input > 50 ? input > 75 ? "cwarn" : "chint" : "cstatuscircle"}
+			(label
+				:text icon
+				:class "cstatusicon"
+			)
+		)
+	)
+)
+
+(defwidget sstatus [input icon ?class]
+	(box
+		:space-evenly false
+		:spacing 10
+		:orientation "horizontal"
+		:class "sstatus"
+		:halign "center"
+		icon
+		(scale
+			:class {class != "" ? class : input > 50 ? input > 75 ? "error" : "warning" : "normal"}
+			:active false
+			:value input
+			:flipped true
+			:orientation "vertical"
+		)
+	)
+)
+
+(defwidget sslider [icon command ?class]
+	(box
+		:spacing 10
+		:orientation "horizontal"
+		:class "sslider"
+		icon
+		(scale
+			:class {class != "" ? class : vol > 50 ? vol > 75 ? "error" : "warning" : "normal"}
+			:orientation "horizontal"
+			:value vol
+			:max 101
+			:min 0
+			:onchange "${command} {}"
+		)
+	)
+)
+
+(defvar showdrawer false)
+
+(defwidget powerdraw [icon]
+	(eventbox
+		:onhover "${EWW_CMD} update showdrawer=true"
+		:onhoverlost "${EWW_CMD} update showdrawer=false"
+		:spacing 10
+		:orientation "horizontal"
+		:class "powerdrawer"
+		(button
+			:onclick "~/bin/powmenu shutdown"
+			:tooltip "Shutdown"
+			(box
+				(revealer
+					:transition "slidedown"
+					:reveal showdrawer
+					:duration "1s"
+					(box
+						(button
+							:onclick "~/bin/powmenu restart"
+							:tooltip "Reboot"
+							""
+						)
+						(button
+							:onclick "loginctl lock-session"
+							:tooltip "Lock"
+							""
+						)
+					)
+				)
+			""
+			)
+		)
+	)
+)
+
+(defwidget powerbtn [cmd icon label]
+	(box
+		:width 400
+		:height 350
+		:orientation "vertical"
+		:class powbtnbox
+		(button
+			:onclick cmd
+			:class powbtn
+			(label
+				:markup "<span font-family='Meslo LGMDZ Nerd Font' font='100'>${icon}</span><span>${label}</span>"
+				:justify "center"
+				:class powbtntext
+				:xalign 0.5
+				:yalign 0.5
+			label)
+		)
+	)
+)

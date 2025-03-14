@@ -1,7 +1,7 @@
 {
 	// CPU
 	"cpu": {
-		"format": "/   {usage}% ",
+		"format": "/   {usage}% ",
 		"on-double-click": "kitty btop"
 	},
 

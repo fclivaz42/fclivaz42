@@ -4,8 +4,8 @@
 
 HYPRCMDS=$(hyprctl -j clients | jq -j '.[] | "dispatch closewindow address:\(.address); "')
 hyprctl --batch "$HYPRCMDS"
-
 sleep 0.25
+eww close powermenu
 
 if [[ $(hyprctl -j clients | jq length) -gt 0 ]]; then
 		notify-send -a Warning "Some clients haven't quit!"
@@ -25,5 +25,5 @@ elif [[ $1 == "logout" ]]; then
 	sleep 0.25
 	hyprctl dispatch exit
 else
-	notify-send "Wrong usage!"
+	notify-send -a System "Wrong usage!"
 fi

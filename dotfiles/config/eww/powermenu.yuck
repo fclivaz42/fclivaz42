@@ -1,0 +1,70 @@
+(defwindow powermenu
+	:monitor 0
+	:geometry	(geometry	:x "0%"
+							:y "0%"
+							:width "75%"
+							:height "60%"
+							:anchor "center"
+				)
+	:stacking "overlay"
+	:exclusive false
+	:focusable true
+	:namespace "powermenu"
+	(box
+		:space-evenly false
+		:orientation "vertical"
+		:spacing 25
+		:class powmenubox
+		(box
+			:valign "fill"
+			:orientation "horizontal"
+			:space-evenly true
+			:spacing 25
+			:class powmenubox
+			(powerbtn
+				:cmd "~/bin/powmenu shutdown &"
+				:icon ""
+				:label "Shutdown"
+			)
+			(powerbtn
+				:cmd "~/bin/powmenu restart &"
+				:icon ""
+				:label "Reboot"
+			)
+			(powerbtn
+				:cmd "eww close powermenu && loginctl lock-session"
+				:icon ""
+				:label "Lock"
+			)
+		)
+		(box
+			:valign "fill"
+			:orientation "horizontal"
+			:space-evenly true
+			:spacing 25
+			:class powmenubox
+			(powerbtn
+				:cmd "eww close powermenu && systemctl hibernate"
+				:icon ""
+				:label "Hibernate"
+			)
+			(powerbtn
+				:cmd "eww close powermenu && systemctl suspend"
+				:icon ""
+				:label "Suspend"
+			)
+			(powerbtn
+				:cmd "~/bin/powmenu logout &"
+				:icon ""
+				:label "Logout"
+			)
+		)
+		(box
+			:class powmenubox
+			:valign "end"
+			(button
+				:onclick "eww close powermenu"
+			"Close")
+		)
+	)
+)

@@ -1,0 +1,49 @@
+(defwindow statusbar
+	:monitor 0
+	:geometry (geometry
+					:x "0%"
+					:y "0.1%"
+					:width "99%"
+					:height "3%"
+					:anchor "center top"
+			)
+	:stacking "fg"
+	:exclusive true
+	:namespace "statusbar"
+	(box
+		:orientation "horizontal"
+		:halign "left"
+		(sslider
+			:icon ""
+			:command "pamixer --set-volume"
+		)
+		(sstatus
+			:input "${EWW_CPU["avg"]}"
+			:icon ""
+		)
+		(cstatus
+			:input "${EWW_RAM["used_mem_perc"]}"
+			:icon ""
+		)
+		(sstatus
+			:input "${EWW_DISK["/"]["used_perc"]}"
+			:icon ""
+		)
+		(sstatus
+			:input wifi
+			:icon ""
+		)
+		(cstatus
+			:input "${EWW_BATTERY['BAT1']['capacity']}"
+			:icon ""
+		)
+		(powerdraw
+			:icon ""
+		)
+		;; (greeter
+		;; 	:name "fuckoff"
+		;; 	:text "${EWW_BATTERY['BAT1']['status']}"
+		;; 	;; :text {bt ? "Connected" : "Disconnected"}
+		;; )
+	)
+)

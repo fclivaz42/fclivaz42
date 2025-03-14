@@ -1,23 +1,8 @@
-(defwindow example
-    :monitor 0
-    :geometry (geometry :x "0%"
-                        :y "0.1%"
-                        :width "99%"
-                        :height "1%"
-                        :anchor "center top"
-              )
-    :stacking "fg"
-    :windowtype "dock"
-    :exclusive true
-	(greeter
-        :text "Say hello!"
-        :name "Tim"
-    )
-)
-
-(defwidget greeter [?text name]
-  (box :orientation "horizontal"
-	   :halign "center"
-	text
-	(button :onclick "hyprctl dispatch workspace 1"
-	  "Greet")))
+(include "defwidgets.yuck")
+(include "defvars.yuck")
+(include "statusbar.yuck")
+(include "powermenu.yuck")
+(include "desktop.yuck")
+(include "notifdaemon.yuck")
+(include "brightness.yuck")
+(include "volume.yuck")
