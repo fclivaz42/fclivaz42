@@ -5,6 +5,7 @@
 [alias]
 	undo = reset --soft HEAD^
 	nuke = reset --hard HEAD
+	shotgun = reset --hard HEAD^
 
 [core]
 	editor = nvim
