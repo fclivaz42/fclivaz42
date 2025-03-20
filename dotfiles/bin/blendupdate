@@ -5,22 +5,41 @@ if [[ -z $1 ]]; then
 	exit 1
 fi
 FOLDER=/usr/share/blender/$1/datafiles
-read -p "Outputting to folder $FOLDER. Validate? [y/n] " valid
-case $valid in
+until [[ "$valid" =~ [yY][eE][sS] || "$valid" =~ [yY] ]]; do
+	read -p "Outputting to folder $FOLDER. Validate? [y/n] " valid
+	case $valid in
 
-	y | Y)
-		rm -rf $FOLDER/colormanagement
-		mkdir $FOLDER/colormanagement
-		cp -r /mnt/Blenders/zcopy-colormanagement/* $FOLDER/colormanagement
-	;;
-	n | N)
-		echo "Exiting."
-		exit 0
-	;;
-	*)
-		echo "Invalid operation. Exiting."
-		exit 1
-	;;
-esac
+		y | Y)
+			echo "Removing $FOLDER"
+			sudo rm -rf $FOLDER/colormanagement
+			echo "Creating $FOLDER"
+			sudo mkdir -p $FOLDER/colormanagement
+			echo "Copying to $FOLDER"
+			sudo cp -r ~/Documents/zcopy-colormanagement/* $FOLDER/colormanagement
+			until [[ "$CHOICE" =~ [yY][eE][sS] || "$CHOICE" =~ [yY] || "$CHOICE" =~ [nN][oO] || "$CHOICE" =~ [nN] ]]; do
+				read -p "Clear out old version? " CHOICE
+				case "$CHOICE" in
+					[yY][eE][sS] | [yY])
+						read -p "Version to clear" CLEARVER
+						CFOLDER=/usr/share/blender/$CLEARVER
+						echo "clearing $CFOLDER"
+						sudo rm -rf $CFOLDER
+					;;
+					[nN][oO] | [nN]) exit 0
+					;;
+					*) echo "Unknown choice."
+					;;
+				esac
+			done
+		;;
+		n | N)
+			echo "Exiting."
+			exit 0
+		;;
+		*)
+			echo "Invalid operation."
+		;;
+	esac
+done
 
 exit 0

@@ -11,6 +11,8 @@ alias ll='ls -la'
 alias llh='ls -lah'
 alias tree='eza --tree'
 alias virc="tmux new-session \; split-window -v \; split-window -h \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; send-keys 'nvim ~/.zshrc && exit' C-m \; select-pane -t 2 \; send-keys 'nvim ~/zshrc.d/zsh_aliases && exit' C-m \; select-pane -t 3 \; send-keys 'nvim ~/zshrc.d/zsh_exports && exit' C-m \; select-pane -t 4 \; send-keys 'nvim ~/zshrc.d/zsh_plugins && exit' C-m \;"
+alias make='make -j$(nproc) -s'
+alias viconf="nvim ~/.config/"
 
 alias ga="git add ."
 gcm() {
@@ -35,6 +37,11 @@ if [ $UNAME = "Arch Linux" ]; then
 	alias shutdown="poweroff"
 	alias upsound="sudo cp $HOME/bin/bwoop.oga /usr/share/sounds/freedesktop/stereo/bell.oga"
 	alias alert="ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit"
+elif [ $UNAME = "Alpine Linux" ]; then
+	alias nvconf="nvim ~/.config/nvim"
+	alias rl="source ~/.zshrc"
+	alias shutdown="poweroff"
+	alias sudo="doas"
 else
 	alias rl="source ~/.zshrc"
 	alias cdloc="cd ~/Desktop/LOCAL"
@@ -46,16 +53,10 @@ else
 	alias gitr="git rm -r --cached ."
 	alias brewski='brew update ; brew upgrade ; brew cleanup ; brew cleanup -s'
 fi
-if [ $UNAME != "Darwin" ]; then
-	alias viconf="nvim ~/.config/"
-	alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
-	alias blender="~/bin/blender/blender"
-	alias make='make -j$(nproc) -s'
-	open() {
-		xdg-open $1 & disown
-	}
-else
+
+if [ $UNAME = "Darwin" ]; then
 	alias fastfetch="fastfetch -l apple"
+	unalias make
 	alias make='make -j$(sysctl -n hw.ncpu) -s'
 	alias brewski='cclean ; brew update ; brew upgrade ; brew cleanup ; brew cleanup -s ; cclean'
 	alias cclean='bash ~/Cleaner_42.sh'
@@ -66,5 +67,12 @@ else
 		echo "~/.vscode removed."
 		rm -rf "$HOME/Library/Application Support/Code"
 		echo "lib/Code removed."
+	}
+elif [ $UNAME = "Alpine Linux" ]; then
+	alias fastfetch="fastfetch -l alpine -c none -s none | lolcat --force-color | fastfetch --raw - --logo-width 37 --logo-height 20"
+else
+	alias fastfetch="fastfetch -l arch -c none -s none | lolcat --force | fastfetch --raw - --logo-width 37 --logo-height 20"
+	open() {
+		xdg-open $1 & disown
 	}
 fi
