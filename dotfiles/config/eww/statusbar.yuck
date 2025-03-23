@@ -1,3 +1,5 @@
+
+
 (defwindow statusbar
 	:monitor 0
 	:geometry (geometry
