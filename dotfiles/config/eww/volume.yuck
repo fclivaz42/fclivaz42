@@ -1,0 +1,30 @@
+(defvar class "")
+
+(defwindow volpopup
+	:monitor 0
+	:geometry	(geometry	:x "0%"
+							:y "5%"
+							:width "20%"
+							:height "5%"
+							:anchor "bottom center"
+				)
+	:stacking "overlay"
+	:exclusive false
+	:focusable false
+	:namespace "volpopup"
+	(box
+		:orientation "horizontal"
+		:class "volpopup"
+		:halign "left"
+		""
+		(scale
+			:class {class != "" ? class : vol > 50 ? vol > 75 ? "error" : "warning" : "normal"}
+			:orientation "horizontal"
+			:value vol
+			:width 150
+			:max 101
+			:min 0
+			:active false
+		)
+	)
+)

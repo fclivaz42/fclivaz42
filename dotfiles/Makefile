@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2025/03/15 03:26:40 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2025/03/26 02:12:54 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ core:
 	fi
 	echo "Installing config..."
 	mkdir -p ${HOME}/.config
+	file="mimeapps.list" && ./helper.sh ${HOME}/.config/$$file ${PWD}/config/$$file
 	fld="bat" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="btop" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="fastfetch" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld

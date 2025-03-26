@@ -5,6 +5,7 @@
 (defvar powbtnbox "power_button_cont")
 (defvar powbtn "power_button")
 (defvar powbtntext "power_button_label")
+(defvar volpopupbox "volume_popup")
 
 ;; Status bar variables
 (deflisten window :initial "" "./helpers/window.sh")
@@ -12,7 +13,7 @@
 (deflisten music :initial "" "playerctl --follow metadata --format {{title}}")
 (deflisten artist :initial "" "playerctl --follow metadata --format {{artist}}")
 (deflisten batstat :initial "" "upower -m | stdbuf -oL grep battery_BAT | stdbuf -oL tr -s ' ' | stdbuf -oL cut -f2- -d/ | stdbuf -oL xargs -I '{}' upower -i /'{}' | stdbuf -oL grep state")
-(deflisten vol :initial "" "tail -F $XDG_RUNTIME_DIR/volume")
+(deflisten vol :initial "" "./helpers/volcheck.sh")
 (defpoll bt_state :initial "" :interval "3s" "bt-adapter -i | grep 'Powered: 1' | tr -s ' ' | cut -f3 -d' '")
 (defpoll bt_conn :initial "" :interval "3s" "bluetoothctl devices Connected")
 

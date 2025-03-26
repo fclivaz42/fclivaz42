@@ -1,5 +1,3 @@
-
-
 (defwindow statusbar
 	:monitor 0
 	:geometry (geometry
@@ -17,7 +15,7 @@
 		:halign "left"
 		(sslider
 			:icon ""
-			:command "pamixer --set-volume"
+			:command "pamixer --set-volume {} && echo {} > $XDG_RUNTIME_DIR/volume"
 		)
 		(sstatus
 			:input "${EWW_CPU["avg"]}"
@@ -47,5 +45,6 @@
 		;; 	:text "${EWW_BATTERY['BAT1']['status']}"
 		;; 	;; :text {bt ? "Connected" : "Disconnected"}
 		;; )
+		vol
 	)
 )

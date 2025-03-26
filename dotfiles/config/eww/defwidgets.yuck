@@ -65,7 +65,7 @@
 			:value vol
 			:max 101
 			:min 0
-			:onchange "${command} {}"
+			:onchange "${command}"
 		)
 	)
 )

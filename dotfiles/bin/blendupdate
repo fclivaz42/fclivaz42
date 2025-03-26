@@ -20,7 +20,7 @@ until [[ "$valid" =~ [yY][eE][sS] || "$valid" =~ [yY] ]]; do
 				read -p "Clear out old version? " CHOICE
 				case "$CHOICE" in
 					[yY][eE][sS] | [yY])
-						read -p "Version to clear" CLEARVER
+						read -p "Version to clear: " CLEARVER
 						CFOLDER=/usr/share/blender/$CLEARVER
 						echo "clearing $CFOLDER"
 						sudo rm -rf $CFOLDER

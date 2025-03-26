@@ -1,0 +1,15 @@
+[Default Applications]
+text/plain=org.x.editor.desktop
+image/png=org.gnome.Loupe.desktop
+image/jpeg=org.gnome.Loupe.desktop
+application/octet-stream=xed.desktop
+inode/directory=org.gnome.Nautilus.desktop
+application/x-blender=blender.desktop
+application/x-powershell=org.x.editor.desktop
+x-scheme-handler/ror2mm=r2modman.desktop
+
+[Added Associations]
+text/plain=xed.desktop;org.x.editor.desktop;
+application/x-powershell=org.x.editor.desktop;
+image/png=org.gnome.Loupe.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
