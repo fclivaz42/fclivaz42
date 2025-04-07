@@ -2,13 +2,13 @@
 	// CPU
 	"cpu": {
 		"format": "/   {usage}% ",
-		"on-double-click": "kitty btop"
+		"on-double-click": "btop"
 	},
 
 	// Memory
 	"memory": {
 		"format": "/   {}% ",
-		"on-double-click": "kitty btop"
+		"on-double-click": "btop"
 	},
 
 	// SSD space used
@@ -16,7 +16,7 @@
 		"interval": 60,
 		"format": "/   {percentage_used}% ",
 		"path": "/",
-		"on-double-click": "kitty btop"
+		"on-double-click": "btop"
 	}, 
 	
 	// Network

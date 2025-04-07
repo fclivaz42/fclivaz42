@@ -45,6 +45,5 @@
 		;; 	:text "${EWW_BATTERY['BAT1']['status']}"
 		;; 	;; :text {bt ? "Connected" : "Disconnected"}
 		;; )
-		vol
 	)
 )
