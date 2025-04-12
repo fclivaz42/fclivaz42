@@ -8,7 +8,6 @@ FOLDER=/usr/share/blender/$1/datafiles
 until [[ "$valid" =~ [yY][eE][sS] || "$valid" =~ [yY] ]]; do
 	read -p "Outputting to folder $FOLDER. Validate? [y/n] " valid
 	case $valid in
-
 		y | Y)
 			echo "Removing $FOLDER"
 			sudo rm -rf $FOLDER/colormanagement
@@ -16,21 +15,17 @@ until [[ "$valid" =~ [yY][eE][sS] || "$valid" =~ [yY] ]]; do
 			sudo mkdir -p $FOLDER/colormanagement
 			echo "Copying to $FOLDER"
 			sudo cp -r ~/Documents/zcopy-colormanagement/* $FOLDER/colormanagement
-			until [[ "$CHOICE" =~ [yY][eE][sS] || "$CHOICE" =~ [yY] || "$CHOICE" =~ [nN][oO] || "$CHOICE" =~ [nN] ]]; do
-				read -p "Clear out old version? " CHOICE
-				case "$CHOICE" in
-					[yY][eE][sS] | [yY])
-						read -p "Version to clear: " CLEARVER
-						CFOLDER=/usr/share/blender/$CLEARVER
-						echo "clearing $CFOLDER"
-						sudo rm -rf $CFOLDER
-					;;
-					[nN][oO] | [nN]) exit 0
-					;;
-					*) echo "Unknown choice."
-					;;
-				esac
-			done
+			read -p "Clear out old version? " CHOICE
+			case "$CHOICE" in
+				[nN][oO] | [nN]) exit 0
+				;;
+				*)
+					CFOLDER=/usr/share/blender/$CHOICE
+					echo "clearing $CFOLDER"
+					sudo rm -rf $CFOLDER
+					exit
+				;;
+			esac
 		;;
 		n | N)
 			echo "Exiting."
