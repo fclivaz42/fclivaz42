@@ -6,7 +6,6 @@ user_pref("browser.aboutConfig.showWarning", false);
 /*** [SECTION 0100]: STARTUP ***/
 // 0102: set startup page [SETUP-CHROME]
 user_pref("browser.startup.page", 1);
-user_pref("browser.startup.homepage", "about:home");
 // 0104: set NEWTAB page
 user_pref("browser.newtabpage.enabled", true);
 // 0105: disable sponsored content on Firefox Home (Activity Stream)
