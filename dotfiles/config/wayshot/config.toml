@@ -1,0 +1,12 @@
+[base]
+# output to take screenshot
+# output = "HDMI-A-1"
+# should contain cursor?
+cursor = false
+# should copy screenshot to clipborad?
+file = false
+
+[file]
+# screenshot file encoding
+# possible values: jpg, png, ppm, qui, webp, avif
+encoding = "png"

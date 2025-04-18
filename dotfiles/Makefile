@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2025/04/17 16:55:44 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2025/04/18 19:34:59 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ arch: core graphical clangd
 	fld="hypr" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld hyprland.conf __*
 	fld="swappy" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="waybar" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config.json _*
+	fld="wayshot" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="wlogout" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld layout _*
 	fld="wofi" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config _*
 	echo "Copying/linking bin folder..."
