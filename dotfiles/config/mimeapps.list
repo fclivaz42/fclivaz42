@@ -8,6 +8,11 @@ application/x-blender=blender.desktop
 application/x-powershell=org.x.editor.desktop
 x-scheme-handler/ror2mm=r2modman.desktop
 application/pdf=org.gnome.Papers.desktop
+text/html=librewolf.desktop
+x-scheme-handler/http=librewolf.desktop
+x-scheme-handler/https=librewolf.desktop
+x-scheme-handler/about=librewolf.desktop
+x-scheme-handler/unknown=librewolf.desktop
 
 [Added Associations]
 text/plain=xed.desktop;org.x.editor.desktop;

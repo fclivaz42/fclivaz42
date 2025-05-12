@@ -4,6 +4,7 @@
 
 alias :wq="exit"
 alias :qa="exit"
+alias :q="exit"
 alias cat="bat"
 alias gww="gcc -Wall -Werror -Wextra"
 alias ls='eza'
