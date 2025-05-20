@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2025/04/18 19:34:59 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2025/05/20 02:58:46 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,9 @@ arch: core graphical clangd
 	fld="swwwd" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
 	fld="hyprsave" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
 	fld="powmenu" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
+	fld="blendupdate" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
+	fld="extmount" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
+	fld="screengrab" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
 	fld="backall" && \
 	if [ -f ${HOME}/bin/$$fld ]; then \
 		echo "$$fld already installed."; \

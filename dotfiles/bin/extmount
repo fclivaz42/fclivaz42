@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+	echo "Usage: extmount <mountPoint>"
+	exit 1
+fi
+
+if [ -z "$(ls -A $1)" ]; then
+	mount $1 && notify-send -a "$1" "Mounted." || notify-send -a "$1" "Could not be mounted!"
+else
+	udisksctl unmount -b "$(cat /proc/mounts | grep $1 | cut -f1 -d' ')" && notify-send -a "$1" "Unmounted." || notify-send -a "$1" "Could not be unmounted!";
+fi

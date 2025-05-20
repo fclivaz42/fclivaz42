@@ -11,3 +11,4 @@
 [core]
 	editor = nvim
 	excludesFile = ~/.git_global_ignore
+	pager = less --tabs 4

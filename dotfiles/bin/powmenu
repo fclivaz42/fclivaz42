@@ -12,18 +12,23 @@ if [[ $(hyprctl -j clients | jq length) -gt 0 ]]; then
 		exit
 fi
 
-if [[ $1 == "shutdown" ]]; then
-	notify-send -a System "Shutting Down."
-	sleep 0.25
-	systemctl poweroff
-elif [[ $1 == "restart" ]]; then
-	notify-send -a System "Restarting."
-	sleep 0.25
-	systemctl reboot
-elif [[ $1 == "logout" ]]; then
-	notify-send -a System "Logging Out."
-	sleep 0.25
-	hyprctl dispatch exit
-else
-	notify-send -a System "Wrong usage!"
-fi
+case $1 in
+	"shutdown")
+		notify-send -a System "Shutting Down."
+		sleep 0.25
+		systemctl poweroff
+	;;
+	"restart")
+		notify-send -a System "Restarting."
+		sleep 0.25
+		systemctl reboot
+	;;
+	"logout")
+		notify-send -a System "Logging Out."
+		sleep 0.25
+		hyprctl dispatch exit
+	;;
+	*)
+		notify-send -a Usage "powmenu <shutdown | restart | logout>"
+	;;
+esac

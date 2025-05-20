@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Screenshot script.
+#
+if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]]; then
+	echo "Usage: screengrab <snip | monitor | all> <tempdir> <finaldir>"
+	exit 1
+fi
+
+
+DATE="$(date '+%Y-%m-%d_%H:%M:%S')"
+NAMEFORMAT="Screenshot-$DATE.png"
+MONITOR="$(hyprctl -j activeworkspace | jq -r .monitor)"
+OUTFOLDER=""
+
+case $1 in
+	"snip")
+		WAYSHOT=(wayshot -s --encoding png -)
+		OUTFOLDER="Snippets"
+		NOTI="Snippet"
+	;;
+	"monitor")
+		WAYSHOT=(wayshot -o $MONITOR --encoding png -)
+		OUTFOLDER="$MONITOR"
+		NOTI="$MONITOR"
+		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER"
+	;;
+	"all")
+		WAYSHOT=(wayshot --encoding png -)
+		OUTFOLDER="Fullscreen"
+		NOTI="$OUTFOLDER"
+		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER"
+	;;
+esac
+mkdir -p "$3/$OUTFOLDER"
+${WAYSHOT[@]} | magick - -quality 100 - | tee "$2/$NAMEFORMAT" | wl-copy
+notify-send -a Screenshot "$NOTI copied to clipboard."
+zopflipng -m -y "$2/$NAMEFORMAT" "$3/$OUTFOLDER/$NAMEFORMAT"
