@@ -23,13 +23,13 @@ case $1 in
 		WAYSHOT=(wayshot -o $MONITOR --encoding png -)
 		OUTFOLDER="$MONITOR"
 		NOTI="$MONITOR"
-		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER"
+		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER" &
 	;;
 	"all")
 		WAYSHOT=(wayshot --encoding png -)
 		OUTFOLDER="Fullscreen"
 		NOTI="$OUTFOLDER"
-		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER"
+		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER" &
 	;;
 esac
 mkdir -p "$3/$OUTFOLDER"
