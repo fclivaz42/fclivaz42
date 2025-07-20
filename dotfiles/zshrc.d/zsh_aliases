@@ -33,6 +33,7 @@ if [ $UNAME = "Arch Linux" ]; then
 	alias nvconf="nvim ~/.config/nvim"
 	alias wbconf="nvim ~/.config/waybar"
 	alias rl="hyprctl reload && source ~/.zshrc"
+	alias rlh="hyprctl --instance 0 'dispatch exec hyprlock'"
 	alias reboot='notify-send -a System "Restarting." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true'
 	alias poweroff='notify-send -a System "Shutting Down." && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true'
 	alias shutdown="poweroff"
