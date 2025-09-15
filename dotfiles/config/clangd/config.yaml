@@ -1,2 +1,2 @@
 CompileFlags:
-  Add: [-Wall, -Werror, -Wextra]
+  Add: [-Wall, -Werror, -Wextra, -std=c++23]

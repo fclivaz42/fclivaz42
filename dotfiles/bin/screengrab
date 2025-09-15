@@ -7,11 +7,12 @@ if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]]; then
 	exit 1
 fi
 
-
 DATE="$(date '+%Y-%m-%d_%H:%M:%S')"
 NAMEFORMAT="Screenshot-$DATE.png"
 MONITOR="$(hyprctl -j activeworkspace | jq -r .monitor)"
 OUTFOLDER=""
+
+wl-copy -c
 
 case $1 in
 	"snip")
@@ -32,7 +33,15 @@ case $1 in
 		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER" &
 	;;
 esac
+
 mkdir -p "$3/$OUTFOLDER"
+
 ${WAYSHOT[@]} | magick - -quality 100 - | tee "$2/$NAMEFORMAT" | wl-copy
-notify-send -a Screenshot "$NOTI copied to clipboard."
-zopflipng -m -y "$2/$NAMEFORMAT" "$3/$OUTFOLDER/$NAMEFORMAT"
+if [ -n "$(find "$2/$NAMEFORMAT" -prune -size +10c)" ]; then
+	notify-send -a Screenshot "$NOTI copied to clipboard."
+	zopflipng -m -y "$2/$NAMEFORMAT" "$3/$OUTFOLDER/$NAMEFORMAT"
+else
+	notify-send -a Screenshot "$NOTI aborted."
+	rm "$2/$NAMEFORMAT"
+	wl-copy -c
+fi
