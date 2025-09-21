@@ -24,7 +24,7 @@ swww-daemon &
 sleep 1
 
 while true; do
-	for disp in $(swww query | cut -d':' -f1); do
+	for disp in $(hyprctl monitors -j | jq -r '.[].name'); do
 		img=$(find "$1" -type f | while read -r imgs; \
 		do echo "$(($(date +%s%N) % 1000)):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
 			export TRANSITION=$(ref)
