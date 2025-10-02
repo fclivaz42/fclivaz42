@@ -6,7 +6,10 @@
 	},
 	"display": {
 		"color": "92",
-		"separator": "\t"
+		"separator": "\t",
+		"size": {
+			"binaryPrefix": "si"
+		}
 	},
 	"modules": [
 		{

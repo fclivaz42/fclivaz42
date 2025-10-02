@@ -26,7 +26,7 @@ sleep 1
 while true; do
 	for disp in $(hyprctl monitors -j | jq -r '.[].name'); do
 		img=$(find "$1" -type f | while read -r imgs; \
-		do echo "$(($(date +%s%N) % 1000)):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
+		do echo "$(($(date +%N) % 1000)):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
 			export TRANSITION=$(ref)
 			[[ $TRANSITION == "wipe" || $TRANSITION == "wave" ]] && export TRANSITION="$TRANSITION --transition-angle $((1 + $RANDOM % 360))"
 			# echo "Outputting image $img on display $disp with transition $TRANSITION"
