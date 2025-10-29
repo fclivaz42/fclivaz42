@@ -30,7 +30,7 @@ while true; do
 			export TRANSITION=$(ref)
 			[[ $TRANSITION == "wipe" || $TRANSITION == "wave" ]] && export TRANSITION="$TRANSITION --transition-angle $((1 + $RANDOM % 360))"
 			# echo "Outputting image $img on display $disp with transition $TRANSITION"
-			swww img -o "$disp" "$img" -t $TRANSITION && sleep 2
+			ps aux | grep "Z:" | grep -v "grep" &>/dev/null || swww img -o "$disp" "$img" -t $TRANSITION && sleep 2
 		done
 	sleep $INTERVAL
 	done
