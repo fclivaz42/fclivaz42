@@ -18,15 +18,22 @@ function ref {
 	printf "%s" "${array[$r]}"
 }
 
+function fld {
+	if [[ $((1 + RANDOM % 5)) -eq 4 ]]; then
+		echo "$2"
+	else
+		echo "$1"
+	fi
+}
+
 # This controls (in seconds) when to switch to the next image
-INTERVAL=300
+INTERVAL=$((60 * 3))
 swww-daemon &
 sleep 1
 
 while true; do
 	for disp in $(hyprctl monitors -j | jq -r '.[].name'); do
-		img=$(find "$1" -type f | while read -r imgs; \
-		do echo "$(($(date +%N) % 1000)):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
+		img=$(find "$(fld $1 $2)" -type f | while read -r imgs; do echo "$(($(date +%N | sed 's/0//g') % 1000)):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
 			export TRANSITION=$(ref)
 			[[ $TRANSITION == "wipe" || $TRANSITION == "wave" ]] && export TRANSITION="$TRANSITION --transition-angle $((1 + $RANDOM % 360))"
 			# echo "Outputting image $img on display $disp with transition $TRANSITION"
