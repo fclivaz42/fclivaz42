@@ -19,7 +19,7 @@ function ref {
 }
 
 function fld {
-	if [[ $((1 + RANDOM % 5)) -eq 4 ]]; then
+	if [[ $((1 + RANDOM % 4)) -eq 4 ]]; then
 		echo "$2"
 	else
 		echo "$1"

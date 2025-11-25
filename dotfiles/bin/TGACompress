@@ -1,0 +1,2 @@
+#!/bin/zsh
+find . -name "*.tga" -exec bash -c "identify -format '%[opaque]' '{}' | grep True >/dev/null && identify -format '%[channels]' '{}' | grep 4 >/dev/null && magick '{}' -alpha off '{}' && echo 'Removed Alpha:\t {}'; identify -format '%[compression]' | grep None >/dev/null && magick -compress RLE '{}' '{}' && echo 'Compressed:\t {}'" \;
