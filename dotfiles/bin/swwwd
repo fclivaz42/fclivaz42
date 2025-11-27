@@ -9,7 +9,6 @@ if [[ $# -lt 1 ]] || [[ ! -d $1   ]]; then
 	exit 1
 fi
 
-# Edit below to control the images transition
 export SWWW_TRANSITION_FPS=120
 export SWWW_TRANSITION_STEP=90
 function ref {
@@ -19,21 +18,29 @@ function ref {
 }
 
 function fld {
-	if [[ $((1 + RANDOM % 4)) -eq 4 ]]; then
+	if [[ $((1 + $RANDOM % 4)) -eq 4 ]]; then
 		echo "$2"
 	else
 		echo "$1"
 	fi
 }
 
+function generator {
+	dd if=/dev/random of=/dev/stdout bs=3 count=1 2>/dev/null | base64
+	# echo $(((($(date +%N) + $(date +%s)) * $RANDOM) % 10000))
+}
+
 # This controls (in seconds) when to switch to the next image
-INTERVAL=$((60 * 3))
+MINUTES=$((($RANDOM % 16) + 5))
+SECNDS=$((($RANDOM % 21) + 50))
+INTERVAL=$(($MINUTES * $SECNDS))
+echo "Displaying a new wallpaper every $((INTERVAL / 60)) minutes and $((INTERVAL % 60)) seconds... ($INTERVAL)"
 swww-daemon &
 sleep 1
 
 while true; do
 	for disp in $(hyprctl monitors -j | jq -r '.[].name'); do
-		img=$(find "$(fld $1 $2)" -type f | grep -v $3 | while read -r imgs; do echo "$(($(date +%N | sed 's/0//g') % 1000)):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
+		img=$(find "$(fld $1 $2)" -type f | grep -v $3 | while read -r imgs; do echo "$(generator):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
 			export TRANSITION=$(ref)
 			[[ $TRANSITION == "wipe" || $TRANSITION == "wave" ]] && export TRANSITION="$TRANSITION --transition-angle $((1 + $RANDOM % 360))"
 			# echo "Outputting image $img on display $disp with transition $TRANSITION"
