@@ -1,10 +1,9 @@
 #!/bin/zsh
-source ~/Documents/sysfiles/path.zsh
 [ -z $BACKUPPATH ] && echo "Cowardly refusing to back up since BACKUPPATH isnt set!" && exit
 # tmux new-session \; \
 #     split-window -v \; \
 #     select-pane -t 1 \; \
-#     send-keys "rsync -av --exclude={'.cache','.cargo','builds','.local/share/Trash','.local/share/nvim','*cache*','*Cache*','*tmp*','*temp*','*.log','*.blend1'} -e ssh ~/ $BACKUPPATH/Backups/HOME && exit" C-m \; \
+#     send-keys "rsync -av --exclude-from=$HOME/bin/exclude-list-home.txt -e ssh ~/ $BACKUPPATH/Backups/HOME 2>>/tmp/backall.log && exit" C-m \; \
 #     select-pane -t 2 \; \
-#     send-keys "rsync -av --exclude={'\$RECYCLE.BIN','Backup','BlenderInstalls','System Volume Information','*Trash*','*Temp*','*cache*','*TEMP*','*TMP*','*tmp*','*.log','*.blend1'} -e ssh /mnt/Blenders/ $BACKUPPATH/Backups/EXTRA && exit" C-m \;
+#     send-keys "rsync -av --exclude-from=$HOME/bin/exclude-list-shared.txt -e ssh /mnt/Shared/ $BACKUPPATH/Backups/EXTRAS 2>>/tmp/backall.log && exit" C-m \;
 exit

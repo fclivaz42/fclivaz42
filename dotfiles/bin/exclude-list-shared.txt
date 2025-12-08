@@ -1,0 +1,15 @@
+$RECYCLE.BIN
+.Trash-1000
+*Trash*
+*Temp*
+*Cache*
+*cache*
+*TEMP*
+*TMP*
+*tmp*
+*.log
+*.iso
+*.blend1
+Backup
+"System Volume Information"
+Recovery

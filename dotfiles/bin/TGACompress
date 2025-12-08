@@ -1,2 +1,12 @@
-#!/bin/zsh
-find . -name "*.tga" -exec bash -c "identify -format '%[opaque]' '{}' | grep True >/dev/null && identify -format '%[channels]' '{}' | grep 4 >/dev/null && magick '{}' -alpha off '{}' && echo 'Removed Alpha:\t {}'; identify -format '%[compression]' | grep None >/dev/null && magick -compress RLE '{}' '{}' && echo 'Compressed:\t {}'" \;
+#!/bin/bash
+compr()
+{
+	if identify -format '%[opaque]' "$1" | grep -q "True" && identify -format '%[channels]' "$1" | grep -q "4"; then
+		magick "$1" -alpha off "$1" && echo -e "Removed Alpha:\t $1"
+	fi
+	if identify -format '%[compression]' "$1" | grep -q None; then
+		magick -compress RLE "$1" "$1" && echo -e "Compressed:\t $1"
+	fi
+}
+export -f compr
+find . -name "*.tga" -exec bash -c "compr '{}'" \;

@@ -1,0 +1,82 @@
+#!/bin/bash
+timestamp()
+{
+	if file --mime-type "$1" | grep -q "video"; then
+		ts=$(exiftool -T -CreateDate "$1" 2>/dev/null)
+		if [[ "$ts" == "0000:00:00 00:00:00" ]]; then
+			unset ts
+		fi
+	else
+		ts=$(exiftool -T -CreateDate "$1" 2>/dev/null)
+	fi
+		if [[ ! "$ts" == "0000:00:00 00:00:00" ]] && [[ ! "$ts" == "-" ]]; then
+		ts=${ts/:/-}
+		ts=${ts/:/-}
+		echo "$ts"
+	elif echo "$1" | grep -E -o -q "20[0-2][0-9][-_:. ]?[0-1][0-9][-_:. ]?[0-3][0-9][-_ .]?[0-2][0-9][-_: .]?[0-5][0-9][-_: .]?[0-5][0-9]"; then
+		echo "$1" | grep -E -o "20[0-2][0-9][-_:. ]?[0-1][0-9][-_:. ]?[0-3][0-9][-_ .]?[0-2][0-9][-_: .]?[0-5][0-9][-_: .]?[0-5][0-9]" | sed -E 's/20([0-2][0-9])[-_:. ]?([0-1][0-9])[-_:. ]?([0-3][0-9])[-_ .]?([0-2][0-9])[-_: .]?([0-5][0-9])[-_: .]?([0-5][0-9])/20\1-\2-\3 \4:\5:\6/g'
+	elif echo "$1" | grep -E -o -q "20[0-2][0-9][-_:. ]?[0-1][0-9][-_:. ]?[0-3][0-9]"; then
+		echo "$1" | grep -E -o "20[0-2][0-9][-_:. ]?[0-1][0-9][-_:. ]?[0-3][0-9]" | sed -E 's/20([0-2][0-9])[-_:. ]?([0-1][0-9])[-_:. ]?([0-3][0-9])/20\1-\2-\3/g'
+	else
+		echo "2020-01-01"
+	fi
+}
+	# WARN: TRIPLE CHECK THE ABOVE!
+export -f timestamp
+
+fn()
+{
+	ts=$(timestamp "$1")
+	if [[ $(($(wc -c "$1" | cut -f1 -d' ') / 1000000)) -gt 100 ]] && [[ ! "$1" =~ _c\.(mp4|MP4|mov|MOV)$ ]] && [[ ! "$1" =~ "WhatsApp" ]]; then
+		echo "$1 bigger than 100M, compressing"
+		name=$(echo "$1" | sed 's/.mp4//g')
+		if ffmpeg -hwaccel vaapi -hwaccel_output_format vaapi -vaapi_device /dev/dri/renderD128 -i "$1" -c:v h264_vaapi -crf 23 -preset veryslow -c:a copy "$name"_c.mp4; then
+			if [[ $(wc -c "$name"_c.mp4 | cut -f1 -d' ') -lt $(wc -c "$1" | cut -f1 -d' ') ]]; then
+				rm -rf "$1"
+			else
+				rm -rf "$name"_c.mp4
+				mv "$1" "$name"_c.mp4
+				echo "'$name'_c.mp4 bigger than $1, cancelling"
+			fi
+		else
+			rm -rf "$name"_c.mp4
+			mv "$1" "$name"_c.mp4
+			echo "FFMPEG fail for $1!"
+		fi
+		touch -d "$ts" "$name"_c.mp4
+		tsv=$(exiftool -T -CreateDate "$name"_c.mp4 2>/dev/null)
+		if [[ "$tsv" == "0000:00:00 00:00:00" ]]; then
+			exiftool "-DateTimeOriginal<FileModifyDate" "-CreateDate<FileModifyDate" "$name"_c.mp4
+			touch -d "$ts" "$name"_c.mp4
+		fi
+		echo "$ts '$name'_c.mp4"
+	else
+		touch -d "$ts" "$1"
+		tso=$(exiftool -T -CreateDate "$1" 2>/dev/null)
+		if [[ "$tso" == "0000:00:00 00:00:00" ]] || [[ "$tso" == "-" ]]; then
+			exiftool "-DateTimeOriginal<FileModifyDate" "-CreateDate<FileModifyDate" "$1" &>/dev/null
+			touch -d "$ts" "$1"
+		fi
+		echo "$ts $1"
+	fi
+}
+
+export -f fn
+
+find . -path "./DCIM" -prune -o -type f -name "*.mp4" -exec bash -c "fn '{}'" \; &
+find "./DCIM" -type f -name "*.mp4" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.MP4" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.mov" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.MOV" -exec bash -c "fn '{}'" \; &
+find . \( -path "./DCIM" -o -path "./Android/media/com.whatsapp/WhatsApp/Media" \) -prune -o -type f -name "*.jpg" -exec bash -c "fn '{}'" \; &
+find . \( -path "./DCIM" -o -path "./Android/media/com.whatsapp/WhatsApp/Media" \) -prune -o -type f -name "*.jpeg" -exec bash -c "fn '{}'" \; &
+find "./DCIM" -type f -name "*.jpg" -exec bash -c "fn '{}'" \; &
+find "./DCIM" -type f -name "*.jpeg" -exec bash -c "fn '{}'" \; &
+find "./Android/media/com.whatsapp/WhatsApp/Media" -type f -name "*.jpg" -exec bash -c "fn '{}'" \; &
+find "./Android/media/com.whatsapp/WhatsApp/Media" -type f -name "*.jpeg" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.JPG" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.JPEG" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.jfif" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.JFIF" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.png" -exec bash -c "fn '{}'" \; &
+find . -type f -name "*.PNG" -exec bash -c "fn '{}'" \;
