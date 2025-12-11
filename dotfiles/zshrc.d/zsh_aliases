@@ -26,6 +26,7 @@ alias gsw='git switch'
 alias gd='git diff'
 alias gu='git undo'
 alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold cyan)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias tmux="tmux attach || tmux"
 
 if [ $UNAME = "Arch Linux" ]; then
 	alias hlconf="nvim ~/.config/hypr"
@@ -43,6 +44,11 @@ elif [ $UNAME = "Alpine Linux" ]; then
 	alias rl="source ~/.zshrc"
 	alias shutdown="poweroff"
 	alias sudo="doas"
+	lbu-commit() {
+		doas sed -i '/pihole/d' /etc/apk/world
+		doas sed -i -E '/^man.*/d' /etc/apk/world
+		doas lbu commit -d
+	}
 else
 	alias rl="source ~/.zshrc"
 	alias cdloc="cd ~/Desktop/LOCAL"
