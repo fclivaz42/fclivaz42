@@ -11,7 +11,6 @@ alias ls='eza'
 alias ll='ls -lahF --group-directories-first --icons'
 alias tree='eza --tree -lhF --group-directories-first --icons'
 alias virc="tmux new-session \; split-window -v \; split-window -h \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; send-keys 'nvim ~/.zshrc && exit' C-m \; select-pane -t 2 \; send-keys 'nvim ~/zshrc.d/zsh_aliases && exit' C-m \; select-pane -t 3 \; send-keys 'nvim ~/zshrc.d/zsh_exports && exit' C-m \; select-pane -t 4 \; send-keys 'nvim ~/zshrc.d/zsh_plugins && exit' C-m \;"
-alias make='make -j$(nproc) -s'
 alias viconf="nvim ~/.config/"
 
 alias ga="git add ."
@@ -63,8 +62,6 @@ fi
 
 if [ $UNAME = "Darwin" ]; then
 	alias fastfetch="fastfetch -l apple"
-	unalias make
-	alias make='make -j$(sysctl -n hw.ncpu) -s'
 	alias brewski='cclean ; brew update ; brew upgrade ; brew cleanup ; brew cleanup -s ; cclean'
 	alias cclean='bash ~/Cleaner_42.sh'
 	alias francinette=/Users/fclivaz/francinette/tester.sh
