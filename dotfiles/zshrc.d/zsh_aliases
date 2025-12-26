@@ -38,6 +38,11 @@ if [ $UNAME = "Arch Linux" ]; then
 	alias shutdown="poweroff"
 	alias upsound="sudo cp $HOME/bin/bwoop.oga /usr/share/sounds/freedesktop/stereo/bell.oga"
 	alias alert="ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit"
+	grub-update() {
+		sudo grub-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=GRUB
+		sudo grub-mkconfig -o /boot/grub/grub.cfg
+		sudo grub-mkconfig -o /boot/efi/EFI/GRUB/grub.cfg
+	}
 elif [ $UNAME = "Alpine Linux" ]; then
 	alias nvconf="nvim ~/.config/nvim"
 	alias rl="source ~/.zshrc"
