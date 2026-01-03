@@ -38,6 +38,7 @@ if [ $UNAME = "Arch Linux" ]; then
 	alias shutdown="poweroff"
 	alias upsound="sudo cp $HOME/bin/bwoop.oga /usr/share/sounds/freedesktop/stereo/bell.oga"
 	alias alert="ffplay -nodisp /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit"
+	alias xwl="hyprctl clients -j | jq '.[] | select(.xwayland==true)'"
 	grub-update() {
 		sudo grub-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=GRUB
 		sudo grub-mkconfig -o /boot/grub/grub.cfg
