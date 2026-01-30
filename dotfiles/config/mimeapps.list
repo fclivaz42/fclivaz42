@@ -13,9 +13,11 @@ x-scheme-handler/http=librewolf.desktop
 x-scheme-handler/https=librewolf.desktop
 x-scheme-handler/about=librewolf.desktop
 x-scheme-handler/unknown=librewolf.desktop
+image/x-hdr=gimp.desktop
 
 [Added Associations]
 text/plain=xed.desktop;org.x.editor.desktop;
 application/x-powershell=org.x.editor.desktop;
 image/png=org.gnome.Loupe.desktop;
 image/jpeg=org.gnome.Loupe.desktop;
+image/x-hdr=gimp.desktop;
