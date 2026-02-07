@@ -1,4 +1,3 @@
-(defvar class "")
 (defvar volset false)
 
 (defwindow volpopup
@@ -19,16 +18,16 @@
 		:halign "left"
 		:space-evenly false
 		(label
-			:width 100
-			:text ""
+			:width 70
+			:text { vol > 0 ? "${ vol >= 30 ? "${ vol >= 60 ? '' : '' }" : '' }" : "󰝟" }
 			:class "volicon"
 			:justify "center"
-			:style "font-size: 20pt;"
+			:style "font-size: 40pt;"
 			:xalign 0.5
 			:yalign 0.5
 		)
 		(scale
-			:class { class != "" ? class : vol > 50 ? vol > 75 ? "verror" : "vwarning" : "vnormal" }
+			:class "volslider ${ vol >= 50 ? "${ vol >= 70 ? "verror" : "vwarning" }" : "" }"
 			:orientation "horizontal"
 			:value vol
 			:hexpand true

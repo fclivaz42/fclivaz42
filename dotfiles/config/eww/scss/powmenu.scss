@@ -1,23 +1,45 @@
 /* **************************************************************************** */
 /*                                                                              */
 /*                                                         :::      ::::::::    */
-/*    eww.scss                                           :+:      :+:    :+:    */
+/*    powmenu.scss                                       :+:      :+:    :+:    */
 /*                                                     +:+ +:+         +:+      */
 /*    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         */
 /*                                                 +#+#+#+#+#+   +#+            */
-/*    Created: 2026/02/06 22:24:14 by fclivaz           #+#    #+#              */
-/*    Updated: 2026/02/06 22:24:14 by fclivaz          ###   LAUSANNE.ch        */
+/*    Created: 2026/02/07 22:57:03 by fclivaz           #+#    #+#              */
+/*    Updated: 2026/02/07 22:57:03 by fclivaz          ###   LAUSANNE.ch        */
 /*                                                                              */
 /* **************************************************************************** */
 
-@import "scss/powmenu"
-@import "scss/volume"
+@import "_colors"
 
-/* *{ */
-/* 	all: unset; */
-/* 	font-family: MesloLGMDZ Nerd Font; */
-/* 	font-size: 14px; */
-/* 	padding: 5px; */
-/* 	background-color: black; */
-/* 	border-radius: 20px; */
-/* } */
+.powermenu
+{
+	font-family: MesloLGMDZ Nerd Font Mono;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.powbtnbox
+{
+	border-radius: 10px;
+	background-color: $btnBg;
+}
+
+.powbtnbox:hover
+{
+	background-color: $btnActCol2;
+}
+
+.powbtnbox:focus
+{
+	background-color: $btnActCol2;
+}
+
+.powbtn .powbtnicon
+{
+	transition: 0.25s;
+}
+
+.powbtn .powbtntext
+{
+	font-size: 100%;
+}

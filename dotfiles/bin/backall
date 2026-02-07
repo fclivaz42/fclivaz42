@@ -1,9 +1,0 @@
-#!/bin/zsh
-[ -z $BACKUPPATH ] && echo "Cowardly refusing to back up since BACKUPPATH isnt set!" && exit
-# tmux new-session \; \
-#     split-window -v \; \
-#     select-pane -t 1 \; \
-#     send-keys "rsync -av --exclude-from=$HOME/bin/exclude-list-home.txt -e ssh ~/ $BACKUPPATH/Backups/HOME 2>>/tmp/backall.log && exit" C-m \; \
-#     select-pane -t 2 \; \
-#     send-keys "rsync -av --exclude-from=$HOME/bin/exclude-list-shared.txt -e ssh /mnt/Shared/ $BACKUPPATH/Backups/EXTRAS 2>>/tmp/backall.log && exit" C-m \;
-exit

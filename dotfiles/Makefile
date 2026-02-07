@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2025/05/20 02:58:46 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/02/07 18:43:43 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,22 +85,8 @@ arch: core graphical clangd
 	fld="wlogout" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld layout _*
 	fld="wofi" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config _*
 	echo "Copying/linking bin folder..."
-	mkdir -p ~/bin
-	cd ./bin
-	fld="swwwd" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
-	fld="hyprsave" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
-	fld="powmenu" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
-	fld="blendupdate" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
-	fld="extmount" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
-	fld="screengrab" && ./helper.sh ${HOME}/bin/$$fld ${PWD}/bin/$$fld && chmod a+x ${PWD}/bin/$$fld
-	fld="backall" && \
-	if [ -f ${HOME}/bin/$$fld ]; then \
-		echo "$$fld already installed."; \
-	else \
-		echo "Copying $$fld..."; \
-		cp ${PWD}/bin/$$fld ${HOME}/bin/; \
-	fi
-	cp ${PWD}/bin/bwoop.oga ${HOME}/bin/
+	fld="bin" && ./folder.sh ${HOME}/$$fld ${PWD}/$$fld bwoop.ogg _*
+	mv ${HOME}/bin/_backall ${HOME}/bin/backall
 
 install:
 	echo "Warning: This will replace your current configuration."

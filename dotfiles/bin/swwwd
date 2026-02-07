@@ -31,8 +31,8 @@ function generator {
 }
 
 # This controls (in seconds) when to switch to the next image
-MINUTES=$((($RANDOM % 16) + 5))
-SECNDS=$((($RANDOM % 21) + 50))
+MINUTES=$((($RANDOM % 20) + 5))
+SECNDS=$((($RANDOM % 61) + 30))
 INTERVAL=$(($MINUTES * $SECNDS))
 echo "Displaying a new wallpaper every $((INTERVAL / 60)) minutes and $((INTERVAL % 60)) seconds... ($INTERVAL)"
 swww-daemon &
@@ -43,7 +43,7 @@ while true; do
 		img=$(find "$(fld $1 $2)" -type f | grep -v $3 | while read -r imgs; do echo "$(generator):$imgs"; done | sort -n | cut -d':' -f2- | head -n 1)
 			export TRANSITION=$(ref)
 			[[ $TRANSITION == "wipe" || $TRANSITION == "wave" ]] && export TRANSITION="$TRANSITION --transition-angle $((1 + $RANDOM % 360))"
-			# echo "Outputting image $img on display $disp with transition $TRANSITION"
+			echo "Outputting image $img on display $disp with transition $TRANSITION"
 			ps aux | grep "Z:" | grep -v "grep" &>/dev/null || swww img -o "$disp" "$img" -t $TRANSITION && sleep 2
 		done
 	sleep $INTERVAL

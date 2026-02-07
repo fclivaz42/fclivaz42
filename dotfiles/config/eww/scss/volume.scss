@@ -1,0 +1,68 @@
+/* **************************************************************************** */
+/*                                                                              */
+/*                                                         :::      ::::::::    */
+/*    volume.scss                                        :+:      :+:    :+:    */
+/*                                                     +:+ +:+         +:+      */
+/*    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         */
+/*                                                 +#+#+#+#+#+   +#+            */
+/*    Created: 2026/02/07 22:55:16 by fclivaz           #+#    #+#              */
+/*    Updated: 2026/02/07 22:55:16 by fclivaz          ###   LAUSANNE.ch        */
+/*                                                                              */
+/* **************************************************************************** */
+
+@import "_colors"
+
+.volicon
+{
+	font-family: MesloLGMDZ Nerd Font Mono;
+	background: transparent;
+}
+
+.volpopup
+{
+	all: unset;
+	padding: 5px;
+	border-radius: 20px;
+	border: 1px solid $volpopborder;
+	background-color: $volpopbg;
+}
+
+.volslider scale
+{
+	all: unset;
+	background: transparent;
+}
+
+
+.volslider slider
+{
+	all: unset;
+	background: transparent;
+}
+
+.volslider trough
+{
+	all: unset;
+	margin-right: 10px;
+	border-radius: 7px;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.volslider highlight
+{
+	padding: 10px 0px;
+	border-radius: 7px;
+	transition: 0.5s;
+	background: linear-gradient(90deg, gray 0%, white 100%);
+}
+
+.vwarning highlight
+{
+	background: linear-gradient(90deg, orange 0%, yellow 100%);
+}
+
+.verror highlight
+{
+	background: linear-gradient(90deg, orange 0%, red 100%);
+}
+
