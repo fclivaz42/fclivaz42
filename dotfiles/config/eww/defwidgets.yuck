@@ -106,22 +106,35 @@
 	)
 )
 
-(defwidget powerbtn [cmd icon label]
-	(box
-		:width 400
-		:height 350
+(defwidget powerbtn [cmd icon label hover_status]
+	(eventbox
 		:orientation "vertical"
-		:class powbtnbox
+		:class "powbtnbox"
+		:onhover "${EWW_CMD} update ${label}_hover=true"
+		:onhoverlost "${EWW_CMD} update ${label}_hover=false"
 		(button
 			:onclick cmd
-			:class powbtn
-			(label
-				:markup "<span font-family='Meslo LGMDZ Nerd Font' font='100'>${icon}</span><span>${label}</span>"
-				:justify "center"
-				:class powbtntext
-				:xalign 0.5
-				:yalign 0.5
-			label)
+			:class "powbtn"
+			(box
+				:space-evenly false
+				:orientation "vertical"
+				(label
+					:text icon
+					:class "powbtnicon"
+					:justify "center"
+					:style "font-size: ${ hover_status ? "250pt" : "200pt" }; margin: ${ hover_status ? "-25pt" : "0pt" };"
+					:xalign 0.5
+					:yalign 0.5
+				)
+				(label
+					:text label
+					:height 50
+					:class "powbtntext"
+					:justify "center"
+					:xalign 0.5
+					:yalign 0.5
+				)
+			)
 		)
 	)
 )

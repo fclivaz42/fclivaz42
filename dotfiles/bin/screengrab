@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Screenshot script.
-#
+
 if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]]; then
 	echo "Usage: screengrab <snip | monitor | all> <tempdir> <finaldir>"
 	exit 1

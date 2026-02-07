@@ -7,34 +7,37 @@
 							:anchor "center"
 				)
 	:stacking "overlay"
-	:exclusive false
+	:exclusive true
 	:focusable true
 	:namespace "powermenu"
 	(box
 		:space-evenly false
 		:orientation "vertical"
 		:spacing 25
-		:class powmenubox
+		:class "powermenu"
 		(box
 			:valign "fill"
 			:orientation "horizontal"
 			:space-evenly true
 			:spacing 25
-			:class powmenubox
+			:vexpand true
 			(powerbtn
 				:cmd "~/bin/powmenu shutdown &"
 				:icon ""
 				:label "Shutdown"
+				:hover_status Shutdown_hover
 			)
 			(powerbtn
 				:cmd "~/bin/powmenu restart &"
 				:icon ""
 				:label "Reboot"
+				:hover_status Reboot_hover
 			)
 			(powerbtn
 				:cmd "eww close powermenu && loginctl lock-session"
 				:icon ""
 				:label "Lock"
+				:hover_status Lock_hover
 			)
 		)
 		(box
@@ -42,26 +45,29 @@
 			:orientation "horizontal"
 			:space-evenly true
 			:spacing 25
-			:class powmenubox
+			:vexpand true
 			(powerbtn
 				:cmd "eww close powermenu && systemctl hibernate"
 				:icon ""
 				:label "Hibernate"
+				:hover_status Hibernate_hover
 			)
 			(powerbtn
 				:cmd "eww close powermenu && systemctl suspend"
 				:icon ""
 				:label "Suspend"
+				:hover_status Suspend_hover
 			)
 			(powerbtn
 				:cmd "~/bin/powmenu logout &"
 				:icon ""
 				:label "Logout"
+				:hover_status Logout_hover
 			)
 		)
 		(box
-			:class powmenubox
-			:valign "end"
+			:valign "fill"
+			:height 50
 			(button
 				:onclick "eww close powermenu"
 			"Close")

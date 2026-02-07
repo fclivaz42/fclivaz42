@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Volume handler script.
+
+if [[ -z $1 ]] || [[ -z $2 ]]; then
+	echo "Usage: volumed < -i | -d | -t > <volume>"
+	exit 1
+fi
+
+! [[ "$2" =~ ^[0-9]+$ ]] && echo "<volume> must be an integer." && exit 1
+
+[[ "$2" -gt 100 ]] && echo "<volume> must be between 0 and 100." && exit 1
+
+if [[ $(eww get volset) == "false" ]]; then
+	eww open volpopup
+	eww update volset=true
+fi
+
+case "$1" in
+	"-i" | "-d")
+		[ $(pamixer --get-mute) == 'true' ] && exit 1;
+	;;
+esac
+
+pamixer "$1" "$2"
+
+VOL="$(pamixer --get-volume)"
+
+[ $(pamixer --get-mute) == 'true' ] && VOL="0"
+
+echo "$VOL" > "$XDG_RUNTIME_DIR/volume"
+
+PLAY=0
+
+case "$1" in
+	"-i" | "-d")
+		(( "$VOL" % 10 )) || PLAY=1
+	;;
+	"-t")
+		[[ $(pamixer --get-mute) == 'false' ]] && PLAY=1
+	;;
+esac
+
+[ $PLAY == 1 ] && ffplay -nodisp -volume 30 /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit &
+
+sleep 2
+
+currtime=$(date +%s)
+voltouch=$(date -r $XDG_RUNTIME_DIR/volume +%s)
+
+if [[ $(($currtime - $voltouch)) -ge 2 ]]; then
+	eww close volpopup
+	eww update volset=false
+fi
+
+exit 0

@@ -1,4 +1,5 @@
 (defvar class "")
+(defvar volset false)
 
 (defwindow volpopup
 	:monitor 0
@@ -16,12 +17,21 @@
 		:orientation "horizontal"
 		:class "volpopup"
 		:halign "left"
-		""
+		:space-evenly false
+		(label
+			:width 100
+			:text ""
+			:class "volicon"
+			:justify "center"
+			:style "font-size: 20pt;"
+			:xalign 0.5
+			:yalign 0.5
+		)
 		(scale
-			:class {class != "" ? class : vol > 50 ? vol > 75 ? "error" : "warning" : "normal"}
+			:class { class != "" ? class : vol > 50 ? vol > 75 ? "verror" : "vwarning" : "vnormal" }
 			:orientation "horizontal"
 			:value vol
-			:width 150
+			:hexpand true
 			:max 101
 			:min 0
 			:active false
