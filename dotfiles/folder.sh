@@ -14,7 +14,7 @@ if [ -d $1 ]; then
 		cd $2
 		for file in *; do
 			if [[ $file = $4 ]]; then
-				cp $2/$file $1
+				cp -r $2/$file $1
 			else
 				ln -sf $2/$file $1/$file
 			fi
@@ -30,7 +30,7 @@ else
 	cd $2
 	for file in *; do
 		if [[ $file = $4 ]]; then
-			cp $2/$file $1
+			cp -r $2/$file $1
 		else
 			ln -sf $2/$file $1/$file
 		fi

@@ -1,4 +1,4 @@
-(defvar volset false)
+(include "submodules/popup_sliders/variables.yuck")
 
 (defwindow volpopup
 	:monitor 0
@@ -33,7 +33,7 @@
 			:hexpand true
 			:max 101
 			:min 0
-			:active false
+			:active true
 		)
 	)
 )

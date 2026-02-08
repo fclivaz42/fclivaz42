@@ -1,3 +1,6 @@
+(include "submodules/powermenu/components.yuck")
+(include "submodules/powermenu/variables.yuck")
+
 (defwindow powermenu
 	:monitor 0
 	:geometry	(geometry	:x "0%"

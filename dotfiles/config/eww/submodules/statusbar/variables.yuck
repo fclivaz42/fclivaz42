@@ -1,0 +1,8 @@
+(deflisten window :initial "" "./helpers/window.sh")
+(deflisten wifi :initial "" "./helpers/math 2")
+(deflisten music :initial "" "playerctl --follow metadata --format {{title}}")
+(deflisten artist :initial "" "playerctl --follow metadata --format {{artist}}")
+(defpoll bt_state :initial "" :interval "3s" "bt-adapter -i | grep 'Powered: 1' | tr -s ' ' | cut -f3 -d' '")
+(defpoll bt_conn :initial "" :interval "3s" "bluetoothctl devices Connected")
+
+(defvar showdrawer false)

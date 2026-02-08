@@ -1,29 +1,11 @@
-(defwidget greeter [?text name]
+(defwidget cstatus [input icon enable ?class]
 	(box
-		:orientation "horizontal"
-		:halign "left"
-		text
-		(button
-			:onclick "eww open powermenu"
-			window
-		)
-	)
-)
-
-(defwidget labeled-container [name]
-	(box
-		:class "container"
-		name
-		(children)
-	)
-)
-
-(defwidget cstatus [input icon ?class]
-	(box
+		:visible enable
 		:vexpand false
 		:hexpand false
-		:class "cstatus"
-		(circular-progress :value input
+		:class { class ? class : "cstatus" }
+		(circular-progress
+			:value input
 			:start-at 75
 			:thickness 4
 			:class {class != "" ? class : input > 50 ? input > 75 ? "cwarn" : "chint" : "cstatuscircle"}
@@ -35,12 +17,13 @@
 	)
 )
 
-(defwidget sstatus [input icon ?class]
+(defwidget sstatus [input icon enable ?class]
 	(box
+		:visible enable
 		:space-evenly false
 		:spacing 10
 		:orientation "horizontal"
-		:class "sstatus"
+		:class { class ? class : "sstatus" }
 		:halign "center"
 		icon
 		(scale
@@ -53,11 +36,12 @@
 	)
 )
 
-(defwidget sslider [icon command ?class]
+(defwidget sslider [icon command enable ?class]
 	(box
+		:visible enable
 		:spacing 10
 		:orientation "horizontal"
-		:class "sslider"
+		:class { class ? class : "sslider" }
 		icon
 		(scale
 			:class {class != "" ? class : vol > 50 ? vol > 75 ? "error" : "warning" : "normal"}
@@ -69,8 +53,6 @@
 		)
 	)
 )
-
-(defvar showdrawer false)
 
 (defwidget powerdraw [icon]
 	(eventbox
@@ -101,39 +83,6 @@
 					)
 				)
 			""
-			)
-		)
-	)
-)
-
-(defwidget powerbtn [cmd icon label hover_status]
-	(eventbox
-		:orientation "vertical"
-		:class "powbtnbox"
-		:onhover "${EWW_CMD} update ${label}_hover=true"
-		:onhoverlost "${EWW_CMD} update ${label}_hover=false"
-		(button
-			:onclick cmd
-			:class "powbtn"
-			(box
-				:space-evenly false
-				:orientation "vertical"
-				(label
-					:text icon
-					:class "powbtnicon"
-					:justify "center"
-					:style "font-size: ${ hover_status ? "250pt" : "200pt" }; margin: ${ hover_status ? "-25pt" : "0pt" };"
-					:xalign 0.5
-					:yalign 0.5
-				)
-				(label
-					:text label
-					:height 50
-					:class "powbtntext"
-					:justify "center"
-					:xalign 0.5
-					:yalign 0.5
-				)
 			)
 		)
 	)

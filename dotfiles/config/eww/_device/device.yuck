@@ -1,0 +1,8 @@
+(defvar statusbar_enable_cpu true)
+(defvar statusbar_enable_volume true)
+(defvar statusbar_enable_ram true)
+(defvar statusbar_enable_disk true)
+(defvar statusbar_enable_wifi true)
+(defvar statusbar_enable_battery true)
+(defvar statusbar_disk_name "/home")
+(defvar statusbar_battery_name "BAT1")

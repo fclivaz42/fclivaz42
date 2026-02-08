@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 20:03:40 by fclivaz           #+#    #+#              #
-#    Updated: 2026/02/07 18:43:43 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/02/08 19:26:53 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ arch: core graphical clangd
 	rm -rf ${HOME}/zshrc.d/zsh_brewconfig
 	fld="cava" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="dunst" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
-	fld="eww" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
+	fld="eww" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld eww.yuck _*
 	fld="hypr" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld hyprland.conf __*
 	fld="swappy" && ./helper.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld
 	fld="waybar" && ./folder.sh ${HOME}/.config/$$fld ${PWD}/config/$$fld config.json _*

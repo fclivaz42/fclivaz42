@@ -1,0 +1,6 @@
+(defvar Shutdown_hover false)
+(defvar Reboot_hover false)
+(defvar Lock_hover false)
+(defvar Hibernate_hover false)
+(defvar Suspend_hover false)
+(defvar Logout_hover false)
