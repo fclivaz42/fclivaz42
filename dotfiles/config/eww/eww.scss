@@ -10,14 +10,7 @@
 /*                                                                              */
 /* **************************************************************************** */
 
+@import "_device/colors"
 @import "scss/powmenu"
 @import "scss/volume"
-
-/* *{ */
-/* 	all: unset; */
-/* 	font-family: MesloLGMDZ Nerd Font; */
-/* 	font-size: 14px; */
-/* 	padding: 5px; */
-/* 	background-color: black; */
-/* 	border-radius: 20px; */
-/* } */
+@import "scss/statusbar"

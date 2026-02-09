@@ -12,6 +12,23 @@
 
 @import "../_device/colors"
 
-.statusbar {
+.statusbarcontainer, .sbarcontainer
+{
+	all:unset;
+	background: transparent;
+	padding: 25px;
+}
+
+.sbar
+{
+	font-size: 20pt;
+	border-radius: 10px;
+	background-color: rgba(44, 44, 44, 0.25);
+	border: 2px solid rgb(66, 66, 66);
 	font-family: MesloLGMDZ Nerd Font Mono;
+}
+
+.powerdrawer
+{
+	transition: 1s;
 }

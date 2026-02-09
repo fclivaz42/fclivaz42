@@ -14,32 +14,28 @@
 
 .powermenu
 {
+	all: unset;
 	font-family: MesloLGMDZ Nerd Font Mono;
-	background-color: rgba(0, 0, 0, 0);
+	background: transparent;
 }
 
-.powbtnbox
+.powerbtnbox
 {
 	border-radius: 10px;
 	background-color: $btnBg;
 }
 
-.powbtnbox:hover
+.powerbtnbox:hover, .powerbtnbox:focus
 {
 	background-color: $btnActCol2;
 }
 
-.powbtnbox:focus
-{
-	background-color: $btnActCol2;
-}
-
-.powbtn .powbtnicon
+.powerbtn, .powbtnicon
 {
 	transition: 0.25s;
 }
 
-.powbtn .powbtntext
+.powerbtn, .powbtntext
 {
 	font-size: 100%;
 }

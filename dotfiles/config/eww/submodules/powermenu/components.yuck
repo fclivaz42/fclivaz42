@@ -1,12 +1,12 @@
 (defwidget powerbtn [cmd icon label hover_status]
 	(eventbox
+		:class "powerbtnbox"
 		:orientation "vertical"
-		:class "powbtnbox"
 		:onhover "${EWW_CMD} update ${label}_hover=true"
 		:onhoverlost "${EWW_CMD} update ${label}_hover=false"
 		(button
 			:onclick cmd
-			:class "powbtn"
+			:class "powerbtn"
 			(box
 				:space-evenly false
 				:orientation "vertical"
@@ -14,7 +14,7 @@
 					:text icon
 					:class "powbtnicon"
 					:justify "center"
-					:style "font-size: ${ hover_status ? "250pt" : "200pt" }; margin: ${ hover_status ? "-25pt" : "0pt" };"
+					:style "font-size: ${ hover_status ? "250pt" : "200pt" }; margin: ${ hover_status ? "-50pt" : "0pt" };"
 					:xalign 0.5
 					:yalign 0.5
 				)

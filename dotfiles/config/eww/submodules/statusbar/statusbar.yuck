@@ -5,7 +5,7 @@
 	:monitor 0
 	:geometry (geometry
 					:x "0%"
-					:y "0.1%"
+					:y "01%"
 					:width "99%"
 					:height "3%"
 					:anchor "center top"
@@ -16,50 +16,58 @@
 	(box
 		:orientation "horizontal"
 		:halign "left"
-		:class "statusbar"
-		;; :space-evenly false
-		(sslider
-			:icon ""
-			:class "volslider ${ vol >= 50 ? "${ vol >= 70 ? "verror" : "vwarning" }" : "" }"
-			:enable statusbar_enable_volume
-			:command "pamixer --set-volume {} && echo {} > $XDG_RUNTIME_DIR/volume"
+		:height 55
+		:class "sbarcontainer"
+		(centerbox
+			:height 55
+			:class "sbar"
+			(box
+				:class "statusbar_workspaces"
+			)
+			(box
+				:class "statusbar_clock"
+			)
+			(box
+				:class "statusbar_system"
+				(sslider
+					:icon ""
+					:class "volslider ${ vol >= 50 ? "${ vol >= 70 ? "verror" : "vwarning" }" : "" }"
+					:enable statusbar_enable_volume
+					:command "pamixer --set-volume {} && echo {} > $XDG_RUNTIME_DIR/volume"
+				)
+				(sstatus
+					:icon ""
+					:class "cpustatus"
+					:enable statusbar_enable_cpu
+					:input "${EWW_CPU["avg"]}"
+				)
+				(cstatus
+					:icon ""
+					:class "ramcircle"
+					:enable statusbar_enable_ram
+					:input "${EWW_RAM["used_mem_perc"]}"
+				)
+				(sstatus
+					:icon ""
+					:enable statusbar_enable_disk
+					:input "${EWW_DISK['${statusbar_disk_name}']["used_perc"]}"
+				)
+				(sstatus
+					:icon ""
+					:class "wifistatus"
+					:enable statusbar_enable_wifi
+					:input wifi
+				)
+				(cstatus
+					:icon ""
+					:class "batterycircle"
+					:enable statusbar_enable_battery
+					:input "${EWW_BATTERY['${statusbar_battery_name}']['capacity']}"
+				)
+				(powerdraw
+					:icon ""
+				)
+			)
 		)
-		(sstatus
-			:icon ""
-			:class "cpustatus"
-			:enable statusbar_enable_cpu
-			:input "${EWW_CPU["avg"]}"
-		)
-		(cstatus
-			:icon ""
-			:class "ramcircle"
-			:enable statusbar_enable_ram
-			:input "${EWW_RAM["used_mem_perc"]}"
-		)
-		(sstatus
-			:icon ""
-			:enable statusbar_enable_disk
-			:input "${EWW_DISK['${statusbar_disk_name}']["used_perc"]}"
-		)
-		(sstatus
-			:icon ""
-			:class "wifistatus"
-			:enable statusbar_enable_wifi
-			:input wifi
-		)
-		(cstatus
-			:icon ""
-			:class "batterycircle"
-			:enable statusbar_enable_battery
-			:input "${EWW_BATTERY['${statusbar_battery_name}']['capacity']}"
-		)
-		(powerdraw
-			:icon ""
-		)
-		;; (greeter
-		;; 	:name "fuckoff"
-		;; 	:text "${EWW_BATTERY['BAT1']['status']}"
-		;; 	;; :text {bt ? "Connected" : "Disconnected"}
-		;; )
 	)
 )
