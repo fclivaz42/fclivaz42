@@ -6,7 +6,7 @@
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:12:55 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:02:53 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/09 21:33:29 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	InfoServer::boilerplate()
 		return 1;
 	}
 
+	_volcli.reserve(4);
+	_bricli.reserve(4);
+	_clients.reserve(4);
 	return 0;
 }
 
@@ -45,8 +48,22 @@ int InfoServer::loop()
 {
 	std::cout << "looping! yippie :)" << std::endl;
 
-	while (poll(NULL, 0, -1))
+	// TODO: set signal handler here. We want to cleanly exit on SIGTERM/SIGQUIT and the like.
+
+	_clients.push_back({_sfd, POLLIN, 0});
+
+	while (poll(_clients.data(), _clients.size(), -1))
 	{
+		if (_clients[0].revents & POLLIN)
+			accept_incoming();
+		for (size_t i = 1; i < _clients.size(); i++)
+		{
+			// if (_clients[i].revents & POLLIN)
+			// 	client_read(); which will figure out if the client is [e]xecuting or [s]ubscribing.
+			// 	Send reply to execution and close immediately, close subscribed only on disconnect.
+			// else if (_clients[i].revents & POLLOUT) // dont really check for pollout though lmao
+			// 	forward();
+		}
 	}
 	return 0;
 }
