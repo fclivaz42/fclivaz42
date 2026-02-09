@@ -17,7 +17,7 @@
 		:orientation "horizontal"
 		:halign "left"
 		:height 55
-		:class "sbarcontainer"
+		:style: "all: unset; background: red; padding: 5px;"
 		(centerbox
 			:height 55
 			:class "sbar"

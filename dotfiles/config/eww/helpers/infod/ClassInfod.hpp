@@ -1,38 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   volumed_server.hpp                                 :+:      :+:    :+:   */
+/*   ClassInfod.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 19:58:12 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/07 23:25:09 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/09 21:04:33 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VOLUMED_SERVER_HPP
-# define VOLUMED_SERVER_HPP
+#ifndef INFOD_SERVER_HPP
+# define INFOD_SERVER_HPP
 
-#include "volumed.hpp"
+#include "ClassBrightnessd.hpp"
+#include "ClassVolumed.hpp"
+#include "infod.hpp"
 #include <sys/socket.h>
 #include <sys/poll.h>
 #include <sys/un.h>
+#include <vector>
 
-class VolumeServer
+class InfoServer
 {
 	private:
-		struct sockaddr_un	_sockaddr;
-		const pid_t			_pid;
-		int					_sfd;
+		const pid_t					_pid;
+		int							_sfd;
+		Volumed						_volctl;
+		Brightnessd					_brictl;
+		std::vector<int>			_volcli;
+		std::vector<int>			_bricli;
+		struct sockaddr_un			_sockadr;
+		std::vector<struct pollfd>	_clients;
 
 	public:
-		VolumeServer(const pid_t pid, const std::string& socket_path);
-		~VolumeServer();
+		InfoServer(const pid_t pid, const std::string& socket_path);
+		~InfoServer();
 
 		int	boilerplate();
 		int	loop();
 		int	connect();
-		int	cleanup();
+		int	accept_incoming();
+		int	execute();
+		int	forward();
+		int	subscribe();
 };
 
-#endif // !VOLUMED_SERVER_HPP
+#endif // !INFOD_SERVER_HPP

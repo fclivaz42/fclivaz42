@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   volumed.cpp                                        :+:      :+:    :+:   */
+/*   infod.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 19:31:36 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/07 21:18:30 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/09 20:13:13 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "volumed_server.hpp"
+#include "infod.hpp"
+#include "ClassInfod.hpp"
 
 int start_server(char *env[])
 {
@@ -41,34 +42,58 @@ int start_server(char *env[])
 		return 0;
 	}
 
-	VolumeServer	server(getpid(), socket_path.c_str());
+	InfoServer	server(getpid(), socket_path.c_str());
 
 	if (server.boilerplate())
 		return 1;
 	rcode = server.loop();
-	rcode = server.cleanup();
 
 	return rcode;
 }
 
 int	main(int ac, char *av[], char *env[])
 {
-	if (ac < 2 || ac > 3)
+	if (ac < 2)
 	{
-		std::cerr << "Usage: volumed < s | i / d / m > <volume>" << std::endl;
+		std::cerr << "Usage: 'infod " << START <<"' to start the server." << std::endl
+			<< "     : 'infod " << VOL_SET << " <volume(%)>' to set the volume (%)." << std::endl
+			<< "     : 'infod " << VOL_MUT << "' to toggle mute." << std::endl
+			<< "     : 'infod " << BRI_SET << " <brightness(+-%)> <device>' to set the brightness (%)." << std::endl;
 		return 1;
 	}
 
 	switch (av[1][0])
 	{
-		case 's':
+		case START:
+			if (ac > 2)
+			{
+				std::cerr << "Usage: 'infod " << START <<"' to start the server." << std::endl;
+				return 1;
+			}
 			return start_server(env);
 
-		case 'i':
-		case 'd':
+		case VOL_SET:
+			if (ac < 3 || ac > 3)
+			{
+				std::cerr << "Usage: 'infod " << VOL_SET << " <volume(%)>' to set the volume (%)." << std::endl;
+				return 1;
+			}
 			break;
 
-		case 'm':
+		case VOL_MUT:
+			if (ac > 2)
+			{
+				std::cerr << "Usage: 'infod " << VOL_MUT << "' to toggle mute." << std::endl;
+				return 1;
+			}
+			break;
+
+		case BRI_SET:
+			if (ac < 4 || ac > 4)
+			{
+				std::cerr << "Usage: 'infod " << BRI_SET << " <brightness(+-%)> <device>' to set the brightness (%)." << std::endl;
+				return 1;
+			}
 			break;
 
 		default:

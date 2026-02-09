@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   volumed.hpp                                        :+:      :+:    :+:   */
+/*   ClassVolumed.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/07 19:54:05 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/07 21:02:43 by fclivaz          ###   LAUSANNE.ch       */
+/*   Created: 2026/02/09 20:14:56 by fclivaz           #+#    #+#             */
+/*   Updated: 2026/02/09 21:15:31 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VOLUMED_HPP
 # define VOLUMED_HPP
 
-#include <iostream>
-#include <unistd.h>
+#include "ClassPopup.hpp"
 
-#define XDG_ENV		"XDG_RUNTIME_DIR="
-#define SOCKET_FILE	"/volumed.sock"
-#define ERR_SOCK	"Could not create socket. Exiting."
-#define ERR_BIND	"Could not bind to socket. Exiting."
-#define ERR_LISTEN	"Could not listen on socket. Exiting."
+#define POPUP_NAME "volpopup"
+
+class Volumed : Popupd
+{
+	private:
+		bool	_mute;
+
+	public:
+		Volumed();
+		~Volumed();
+
+	int	set_volume(const std::string& amount);
+	int	switch_mute();
+};
 
 #endif // !VOLUMED_HPP
