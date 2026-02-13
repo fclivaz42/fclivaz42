@@ -1,5 +1,6 @@
 ;; Variables used in multiple components
 (deflisten batstat :initial "" "upower -m | stdbuf -oL grep battery_BAT | stdbuf -oL tr -s ' ' | stdbuf -oL cut -f2- -d/ | stdbuf -oL xargs -I '{}' upower -i /'{}' | stdbuf -oL grep state")
-(deflisten vol :initial "" "tail -F $XDG_RUNTIME_DIR/volume")
+(defvar vol 0)
+(defvar brightness 0)
 (defpoll pc-updates :initial "0" :interval "12h" "checkupdates | wc -l")
 (defpoll aur-updates :initial "0" :interval "12h" "paru -Qqua | wc -l")

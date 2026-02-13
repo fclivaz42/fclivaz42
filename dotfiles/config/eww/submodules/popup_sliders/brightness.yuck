@@ -1,0 +1,37 @@
+(defwindow brightpopup
+	:monitor 0
+	:geometry	(geometry	:x "0%"
+							:y "5%"
+							:width "20%"
+							:height "5%"
+							:anchor "bottom center"
+				)
+	:stacking "overlay"
+	:exclusive false
+	:focusable false
+	:namespace "brightpopup"
+	(box
+		:orientation "horizontal"
+		:class "brightpopup"
+		:halign "left"
+		:space-evenly false
+		(label
+			:width 70
+			:text { brightness > 0 ? "${ brightness >= 40 ? "${ brightness >= 80 ? '󰛨' : '󱩔' }" : '󱩐' }" : "󰛩" }
+			:class "brighticon"
+			:justify "center"
+			:style "font-size: 40pt;"
+			:xalign 0.5
+			:yalign 0.5
+		)
+		(scale
+			:class "brightslider ${ brightness >= 33 ? "${ brightness >= 66 ? "berror" : "bwarning" }" : "" }"
+			:orientation "horizontal"
+			:value brightness
+			:hexpand true
+			:max 101
+			:min 0
+			:active true
+		)
+	)
+)

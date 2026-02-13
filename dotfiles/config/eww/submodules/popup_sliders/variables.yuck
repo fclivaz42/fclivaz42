@@ -1,1 +1,2 @@
 (defvar volset false)
+(defvar brightset false)

@@ -1,0 +1,61 @@
+/* **************************************************************************** */
+/*                                                                              */
+/*                                                         :::      ::::::::    */
+/*    volume.scss                                        :+:      :+:    :+:    */
+/*                                                     +:+ +:+         +:+      */
+/*    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         */
+/*                                                 +#+#+#+#+#+   +#+            */
+/*    Created: 2026/02/07 22:55:16 by fclivaz           #+#    #+#              */
+/*    Updated: 2026/02/07 22:55:16 by fclivaz          ###   LAUSANNE.ch        */
+/*                                                                              */
+/* **************************************************************************** */
+
+@import "../_device/colors"
+
+.brighticon
+{
+	font-family: MesloLGMDZ Nerd Font Mono;
+	background: transparent;
+}
+
+.brightpopup
+{
+	all: unset;
+	padding: 5px;
+	border-radius: 20px;
+	border: 1px solid $volpopborder;
+	background-color: $volpopbg;
+}
+
+.brightslider scale, .brightslider slider
+{
+	all: unset;
+	background: transparent;
+}
+
+.brightslider trough
+{
+	all: unset;
+	margin-right: 10px;
+	border-radius: 7px;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.brightslider highlight
+{
+	padding: 10px 0px;
+	border-radius: 7px;
+	transition: 0.5s;
+	background: linear-gradient(90deg, #222222 0%, #909090 100%);
+}
+
+.bwarning highlight
+{
+	background: linear-gradient(90deg, #909090 0%, #AAAAAA 100%);
+}
+
+.berror highlight
+{
+	background: linear-gradient(90deg, #AAAAAA 0%, white 100%);
+}
+

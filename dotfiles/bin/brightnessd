@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+	echo "Usage: volumed < -i | -d | -t > <volume>"
+	exit 1
+fi
+
+brightnessctl set $1
+eww update brightness="$(awk "BEGIN {print $(brightnessctl g) / $(brightnessctl m) * 100}" | cut -f1 -d.)"

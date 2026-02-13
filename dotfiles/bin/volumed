@@ -28,7 +28,9 @@ VOL="$(pamixer --get-volume)"
 
 [ $(pamixer --get-mute) == 'true' ] && VOL="0"
 
-echo "$VOL" > "$XDG_RUNTIME_DIR/volume"
+eww update vol="$VOL"
+
+pgrep -f "volumed" | grep -v "^$$\$" | xargs kill
 
 PLAY=0
 
@@ -41,16 +43,9 @@ case "$1" in
 	;;
 esac
 
-[ $PLAY == 1 ] && ffplay -nodisp -volume 30 /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit &
+# [ $PLAY == 1 ] && ffplay -nodisp -volume 30 /usr/share/sounds/freedesktop/stereo/bell.oga -autoexit &
 
 sleep 2
-
-currtime=$(date +%s)
-voltouch=$(date -r $XDG_RUNTIME_DIR/volume +%s)
-
-if [[ $(($currtime - $voltouch)) -ge 2 ]]; then
-	eww close volpopup
-	eww update volset=false
-fi
-
+eww close volpopup
+eww update volset=false
 exit 0
