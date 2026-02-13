@@ -6,7 +6,7 @@
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 20:14:56 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:15:31 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/13 20:46:16 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClassPopup.hpp"
 
-#define POPUP_NAME "volpopup"
+#define VOLUME_POPUP_NAME "volpopup"
 
 class Volumed : Popupd
 {

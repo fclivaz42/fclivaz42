@@ -27,7 +27,7 @@
 			:yalign 0.5
 		)
 		(scale
-			:class "volslider ${ vol >= 50 ? "${ vol >= 70 ? "verror" : "vwarning" }" : "" }"
+			:class "volslider ${ vol > 40 ? "${ vol >= 70 ? "verror" : "vwarning" }" : "" }"
 			:orientation "horizontal"
 			:value vol
 			:hexpand true

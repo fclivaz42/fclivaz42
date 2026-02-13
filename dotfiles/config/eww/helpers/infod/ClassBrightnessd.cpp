@@ -6,13 +6,13 @@
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:10:13 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:11:33 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/13 20:46:45 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClassBrightnessd.hpp"
 
-Brightnessd::Brightnessd() : Popupd(POPUP_NAME), _bctl(REGEX_STR)
+Brightnessd::Brightnessd() : Popupd(BRIGHTNESS_POPUP_NAME), _bctl(REGEX_STR)
 {}
 
 Brightnessd::~Brightnessd()

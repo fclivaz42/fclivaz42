@@ -6,7 +6,7 @@
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 18:27:28 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:15:31 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/13 20:46:49 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <sys/wait.h>
 
 #define REGEX_STR "[0-9]{0,3}%"
-#define POPUP_NAME "brightpopup"
+#define BRIGHTNESS_POPUP_NAME "brightpopup"
 
 class Brightnessd : Popupd
 {

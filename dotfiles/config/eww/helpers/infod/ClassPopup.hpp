@@ -6,7 +6,7 @@
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 20:25:34 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:15:31 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/13 19:34:10 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ class Popupd
 		virtual ~Popupd() = 0;
 		bool	parse_amount(const std::string& amount) const;
 		int		open_popup();
-		int 	close_popup(); // TODO: std::thread this, conditional variable, check proceed on exit
+		int		close_popup(); // TODO: std::thread this, conditional variable, check proceed on exit
+		int		force_close();
 };
 
 #endif // !POPUP_HPP

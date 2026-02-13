@@ -6,7 +6,7 @@
 /*   By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:12:55 by fclivaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:33:29 by fclivaz          ###   LAUSANNE.ch       */
+/*   Updated: 2026/02/13 20:47:48 by fclivaz          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,15 @@ int InfoServer::loop()
 {
 	std::cout << "looping! yippie :)" << std::endl;
 
-	// TODO: set signal handler here. We want to cleanly exit on SIGTERM/SIGQUIT and the like.
+	// TODO: set signal handler here. We want to cleanly exit on SIGTERM/SIGQUIT/SIGINT and the like.
 
 	_clients.push_back({_sfd, POLLIN, 0});
 
 	while (poll(_clients.data(), _clients.size(), -1))
 	{
 		if (_clients[0].revents & POLLIN)
-			accept_incoming();
+			;
+			// accept_incoming();
 		for (size_t i = 1; i < _clients.size(); i++)
 		{
 			// if (_clients[i].revents & POLLIN)
