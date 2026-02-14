@@ -1,0 +1,3 @@
+[submodule "dotfiles/plumberd"]
+	path = dotfiles/plumberd
+	url = git@github.com:fclivaz42/plumberd
