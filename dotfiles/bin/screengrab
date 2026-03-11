@@ -36,7 +36,7 @@ esac
 
 mkdir -p "$3/$OUTFOLDER"
 
-${WAYSHOT[@]} | magick - -quality 100 - | tee "$2/$NAMEFORMAT" | wl-copy
+${WAYSHOT[@]} | magick - -channel RGB -separate -swap 0,2 -combine -quality 100 - | tee "$2/$NAMEFORMAT" | wl-copy
 if [ -n "$(find "$2/$NAMEFORMAT" -prune -size +10c)" ]; then
 	notify-send -a Screenshot "$NOTI copied to clipboard."
 	zopflipng -m -y "$2/$NAMEFORMAT" "$3/$OUTFOLDER/$NAMEFORMAT"
