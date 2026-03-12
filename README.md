@@ -17,7 +17,7 @@ I am primarily a self-taught compsci student which loves to tinker with anything
 
 Here are my school statistics:
 
-[![fclivaz's 42 stats](https://badge.mediaplus.ma/greenbinary/fclivaz?1337Badge=off&UM6P=off)](https://profile.intra.42.fr/users/fclivaz)
+[![fclivaz's 42 stats](https://badge.mediaplus.ma/darkblue/fclivaz?1337Badge=off&UM6P=off)](https://profile.intra.42.fr/users/fclivaz)
 
 And my GitHub statistics (which aren't really representative. Explained down below.)
 
