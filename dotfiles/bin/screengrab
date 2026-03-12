@@ -12,8 +12,7 @@ NAMEFORMAT="Screenshot-$DATE.png"
 MONITOR="$(hyprctl -j activeworkspace | jq -r .monitor)"
 OUTFOLDER=""
 DELAY=750
-CONVERT=(magick -)
-GRIM=(grim -t png -l 0)
+GRIM=(grim -t png)
 SIZE=""
 
 wl-copy -c
@@ -21,18 +20,17 @@ wl-copy -c
 case $1 in
 	"snip")
 		SIZE="$(slurp)"
-		GRIM+=(-g - -)
+		GRIM+=(-g -)
 		OUTFOLDER="Snippets"
 		NOTI="Snippet"
 	;;
 	"monitor")
-		GRIM+=(-o $MONITOR -)
+		GRIM+=(-o $MONITOR)
 		OUTFOLDER="$MONITOR"
 		NOTI="$MONITOR"
 		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER" -t "$DELAY" &
 	;;
 	"all")
-		GRIM+=(-)
 		OUTFOLDER="Fullscreen"
 		NOTI="$OUTFOLDER"
 		sleep 0.5 && notify-send -a Screenshot "$OUTFOLDER" -t "$DELAY" &
@@ -44,16 +42,18 @@ case $1 in
 esac
 
 if [[ "$4" == "edit" ]]; then
-	CONVERT+=(-)
+	GRIM+=(-l 2)
 	SWAP=(swappy -f - -o -)
 else
-	CONVERT+=(-quality 50 -)
+	GRIM+=(-l 6)
 	SWAP=(cat)
 fi
 
+GRIM+=(-)
+
 mkdir -p "$3/$OUTFOLDER"
 
-echo "$SIZE" | ${GRIM[@]} | ${CONVERT[@]} | ${SWAP[@]} | tee "$2/$NAMEFORMAT" | wl-copy
+echo "$SIZE" | ${GRIM[@]} | ${SWAP[@]} | tee "$2/$NAMEFORMAT" | wl-copy
 
 if [ -n "$(find "$2/$NAMEFORMAT" -prune -size +10c)" ]; then
 	notify-send -a Screenshot "$NOTI copied to clipboard." -t "$DELAY"
